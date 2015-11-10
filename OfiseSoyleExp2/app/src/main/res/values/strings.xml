@@ -1,0 +1,67 @@
+<resources>
+    <string name="app_name">OfiseSoyle</string>
+    <string name="action_profile">Profil</string>
+    <string name="action_hakkimizda">Hakkımızda</string>
+
+
+    <string-array name="adet_arrays">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+    <string-array name="icecek_cesit_arrays">
+        <item>Americano</item>
+        <item>Cappuccino</item>
+        <item>Caramel Macchiato</item>
+        <item>Chai Latte</item>
+        <item>Fiktered Coffee</item>
+        <item>Iced Americano</item>
+        <item>Iced Caramel Macchiato</item>
+        <item>Iced Chai Latte</item>
+        <item>Iced Latte</item>
+        <item>Iced Mocha</item>
+        <item>Iced White Mocha</item>
+        <item>Latte</item>
+        <item>Mocha</item>
+        <item>Misto</item>
+        <item>White Mocha</item>
+        <item>Ristretto Bianco</item>
+    </string-array>
+
+    <string-array name="yiyecek_cesit_arrays">
+        <item>Fiesta</item>
+        <item>Haşhaşlı-Üç Peynirli</item>
+        <item>Kepekli Puf</item>
+        <item>Mozarella Sandwich</item>
+        <item>Peynirli Croissant</item>
+        <item>Peynirli Simit</item>
+        <item>Zeytinli Açma</item>
+    </string-array>
+
+    <string-array name="tatli_cesit_arrays">
+        <item>Balkabaklı Cheesecake</item>
+        <item>Brownie</item>
+        <item>Elmalı Cheesecake</item>
+        <item>Havuçlu Kek</item>
+        <item>Mozaik Pasta</item>
+    </string-array>
+
+    <string-array name="teslimat_adresi">
+        <item>GARANTI BANKASI GENEL MD.</item>
+        <item>MICROSOFT</item>
+    </string-array>
+
+    <string-array name="teslimat_zaman_araligi">
+        <item>14:30 - 15:30</item>
+        <item>15:30 - 16:30</item>
+    </string-array>
+
+</resources>

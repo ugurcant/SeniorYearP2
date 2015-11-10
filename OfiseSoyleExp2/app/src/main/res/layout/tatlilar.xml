@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/BackgroundWhite">
+
+    <Spinner
+        android:layout_width="@dimen/abc_panel_menu_list_width"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_tatli"
+        android:entries="@array/tatli_cesit_arrays"
+        android:layout_below="@+id/text_tatli_sec"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Tatlınızı Seçiniz"
+        android:id="@+id/text_tatli_sec"
+        android:textColor="@color/ColorPrimaryDark"
+        android:layout_marginTop="110dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/spinner_tatli"
+        android:layout_alignStart="@+id/spinner_tatli" />
+
+    <Button
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="Sepete Ekle"
+        android:id="@+id/button_sepeteTat"
+        android:layout_marginBottom="43dp"
+        android:background="@color/ColorPrimary"
+        android:textColor="@color/BackgroundWhite"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/spinner_tatli"
+        android:layout_alignStart="@+id/spinner_tatli"/>
+
+    <Button
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="Menüye Dön"
+        android:id="@+id/button_tatlilar_md"
+        android:background="@color/ColorPrimary"
+        android:textColor="@color/BackgroundWhite"
+        android:layout_alignTop="@+id/button_sepeteTat"
+        android:layout_alignRight="@+id/spinner_tatli"
+        android:layout_alignEnd="@+id/spinner_tatli"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Adet Giriniz"
+        android:id="@+id/text_tatli_adet"
+        android:textColor="@color/ColorPrimaryDark"
+        android:layout_below="@+id/spinner_tatli"
+        android:layout_alignLeft="@+id/spinner_tatli"
+        android:layout_alignStart="@+id/spinner_tatli" />
+
+    <Spinner
+        android:layout_width="@dimen/abc_panel_menu_list_width"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_tatli_adet"
+        android:layout_below="@+id/text_tatli_adet"
+        android:layout_alignLeft="@+id/text_tatli_adet"
+        android:layout_alignStart="@+id/text_tatli_adet"
+        android:entries="@array/adet_arrays"/>
+
+</RelativeLayout>

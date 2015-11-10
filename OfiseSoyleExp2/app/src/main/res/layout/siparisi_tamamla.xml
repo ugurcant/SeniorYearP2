@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/BackgroundWhite">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Teslimat Zamanını Seçiniz"
+        android:id="@+id/text_teslimat_zamani"
+        android:layout_marginTop="47dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/tabsScrollColor"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_teslimat_zaman"
+        android:entries="@array/teslimat_zaman_araligi"
+        android:layout_below="@+id/text_teslimat_zamani"
+        android:layout_alignLeft="@+id/text_teslimat_zamani"
+        android:layout_alignStart="@+id/text_teslimat_zamani"
+        android:layout_alignRight="@+id/text_teslimat_zamani"
+        android:layout_alignEnd="@+id/text_teslimat_zamani" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Teslimat Adresini Seçiniz"
+        android:id="@+id/text_teslimat_adres"
+        android:layout_below="@+id/spinner_teslimat_zaman"
+        android:layout_alignLeft="@+id/spinner_teslimat_zaman"
+        android:layout_alignStart="@+id/spinner_teslimat_zaman"
+        android:layout_alignRight="@+id/spinner_teslimat_zaman"
+        android:layout_alignEnd="@+id/spinner_teslimat_zaman"
+        android:textColor="@color/tabsScrollColor" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_teslimat_adres"
+        android:entries="@array/teslimat_adresi"
+        android:layout_below="@+id/text_teslimat_adres"
+        android:layout_alignLeft="@+id/text_teslimat_adres"
+        android:layout_alignStart="@+id/text_teslimat_adres"
+        android:layout_alignRight="@+id/text_teslimat_adres"
+        android:layout_alignEnd="@+id/text_teslimat_adres" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Not:"
+        android:id="@+id/text_teslimat_not"
+        android:layout_below="@+id/spinner_teslimat_adres"
+        android:layout_alignLeft="@+id/spinner_teslimat_adres"
+        android:layout_alignStart="@+id/spinner_teslimat_adres"
+        android:textColor="@color/tabsScrollColor" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/editText_teslimat_not"
+        android:layout_below="@+id/text_teslimat_not"
+        android:layout_alignLeft="@+id/text_teslimat_not"
+        android:layout_alignStart="@+id/text_teslimat_not"
+        android:layout_alignRight="@+id/spinner_teslimat_adres"
+        android:layout_alignEnd="@+id/spinner_teslimat_adres"
+        android:background="@color/ColorGrey"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Toplam : "
+        android:id="@+id/text_teslimat_toplam"
+        android:layout_above="@+id/button_siparis_onay"
+        android:layout_alignLeft="@+id/editText_teslimat_not"
+        android:layout_alignStart="@+id/editText_teslimat_not"
+        android:textColor="@color/tabsScrollColor"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Siparişi Onayla"
+        android:id="@+id/button_siparis_onay"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="63dp"
+        android:background="@color/ColorPrimary"
+        android:textColor="@color/BackgroundWhite"
+        android:layout_alignRight="@+id/editText_teslimat_not"
+        android:layout_alignEnd="@+id/editText_teslimat_not"
+        android:layout_alignLeft="@+id/text_teslimat_toplam"
+        android:layout_alignStart="@+id/text_teslimat_toplam" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="22.75"
+        android:id="@+id/text_tutar"
+        android:layout_above="@+id/button_siparis_onay"
+        android:layout_toRightOf="@+id/text_teslimat_toplam"
+        android:layout_toEndOf="@+id/text_teslimat_toplam"
+        android:textColor="@color/tabsScrollColor"/>
+
+</RelativeLayout>

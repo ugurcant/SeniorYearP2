@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/BackgroundWhite">
+
+    <Spinner
+        android:layout_width="@dimen/abc_panel_menu_list_width"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_yiyecek"
+        android:entries="@array/yiyecek_cesit_arrays"
+        android:layout_below="@+id/text_yiyecek_sec"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Yiyeceğinizi Seçiniz"
+        android:id="@+id/text_yiyecek_sec"
+        android:textColor="@color/ColorPrimaryDark"
+        android:layout_marginTop="108dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/spinner_yiyecek"
+        android:layout_alignStart="@+id/spinner_yiyecek" />
+
+    <Button
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="Sepete Ekle"
+        android:id="@+id/button_sepeteYiy"
+        android:layout_marginBottom="43dp"
+        android:background="@color/ColorPrimary"
+        android:textColor="@color/BackgroundWhite"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/spinner_yiyecek"
+        android:layout_alignStart="@+id/spinner_yiyecek"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Menüye Dön"
+        android:id="@+id/button_yiyecekler_md"
+        android:background="@color/ColorPrimary"
+        android:textColor="@color/BackgroundWhite"
+        android:layout_alignTop="@+id/button_sepeteYiy"
+        android:layout_alignRight="@+id/spinner_yiyecek"
+        android:layout_alignEnd="@+id/spinner_yiyecek"
+        android:layout_toRightOf="@+id/text_yiyecek_sec"
+        android:layout_toEndOf="@+id/text_yiyecek_sec"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Adet Giriniz"
+        android:id="@+id/text_yiyecek_adet"
+        android:textColor="@color/ColorPrimaryDark"
+        android:layout_below="@+id/spinner_yiyecek"
+        android:layout_alignLeft="@+id/spinner_yiyecek"
+        android:layout_alignStart="@+id/spinner_yiyecek" />
+
+    <Spinner
+        android:layout_width="@dimen/abc_panel_menu_list_width"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_yiyecek_adet"
+        android:layout_below="@+id/text_yiyecek_adet"
+        android:layout_alignLeft="@+id/text_yiyecek_adet"
+        android:layout_alignStart="@+id/text_yiyecek_adet"
+        android:entries="@array/adet_arrays"/>
+
+</RelativeLayout>
