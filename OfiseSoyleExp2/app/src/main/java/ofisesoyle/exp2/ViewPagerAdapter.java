@@ -28,11 +28,11 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
         if (position == 0) // if the position is 0 we are returning the First tab
         {
-            AnaSayfaFragment anaSayfa = new AnaSayfaFragment();
+            MainPageFragment anaSayfa = new MainPageFragment();
             return anaSayfa;
         } else
         {
-            SepetFragment sepet = new SepetFragment();
+            ShoppingBasketFragment sepet = new ShoppingBasketFragment();
             return sepet;
         }
 

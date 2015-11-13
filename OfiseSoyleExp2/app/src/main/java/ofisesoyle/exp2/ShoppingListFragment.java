@@ -21,13 +21,13 @@ import ofisesoyle_moduls.Urun;
 /**
  * Created by Ugur on 24.05.2015.
  */
-public class IceceklerFragment extends Fragment {
+public class ShoppingListFragment extends Fragment {
 
     public PriceList priceList = new PriceList();
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v =inflater.inflate(R.layout.icecekler,container,false);
+        View v =inflater.inflate(R.layout.shopping_list,container,false);
         v.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
                 return true;

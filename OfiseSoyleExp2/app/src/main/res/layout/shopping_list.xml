@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ofisesoyle.exp2.SepetFragment"
+    tools:context="ofisesoyle.exp2.ShoppingListFragment"
     android:background="@color/BackgroundWhite">
 
     <LinearLayout
@@ -12,22 +12,22 @@
         android:layout_height="match_parent">
 
         <com.etsy.android.grid.StaggeredGridView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/grid_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:item_margin="10dp"
-        app:column_count_portrait="1"
-        app:column_count_landscape="1"/>
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/grid_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:item_margin="10dp"
+            app:column_count_portrait="1"
+            app:column_count_landscape="1"/>
 
     </LinearLayout>
 
     <Button
         android:layout_width="310dp"
         android:layout_height="wrap_content"
-        android:text="Siparişi Onayla"
-        android:id="@+id/button_siparisi_onayla"
+        android:text="Listeye Ürün Ekle"
+        android:id="@+id/button_listeye_urun_ekle"
         android:background="@color/ColorPrimary"
         android:textColor="@color/BackgroundWhite"
         android:layout_alignParentBottom="true"

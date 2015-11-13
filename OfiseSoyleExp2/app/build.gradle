@@ -26,4 +26,6 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:22.0.0'
     compile 'com.etsy.android.grid:library:1.0.5'
     compile 'com.google.android.gms:play-services:7.0.0'
+    compile 'me.dm7.barcodescanner:zbar:1.8.3'
+
 }

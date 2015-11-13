@@ -48,10 +48,10 @@ public class SiparisFragment extends Fragment {
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        double siparisUcret = calcHizmetBedelliFiyat(calcToplamFiyat(ShoppingList.urunSiparisList));
+     /*    double siparisUcret = calcHizmetBedelliFiyat(calcToplamFiyat(ShoppingList.urunSiparisList));
         String siparisUcretS = Double.toString(siparisUcret);
 
-        TextView mf = (TextView) getView().findViewById(R.id.text_tutar);
+       TextView mf = (TextView) getView().findViewById(R.id.text_tutar);
         mf.setText(siparisUcretS);
 
         Button btnST =(Button) getView().findViewById(R.id.button_siparis_onay);
@@ -124,5 +124,6 @@ public class SiparisFragment extends Fragment {
             sonFiyat = tfiyat + 20;
         }
         return sonFiyat;
-    }
+    }*/
+}
 }

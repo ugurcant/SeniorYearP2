@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">OfiseSoyle</string>
+    <string name="app_name">e-JetKasa</string>
     <string name="action_profile">Profil</string>
     <string name="action_hakkimizda">Hakkımızda</string>
 
@@ -36,32 +36,23 @@
         <item>Ristretto Bianco</item>
     </string-array>
 
-    <string-array name="yiyecek_cesit_arrays">
-        <item>Fiesta</item>
-        <item>Haşhaşlı-Üç Peynirli</item>
-        <item>Kepekli Puf</item>
-        <item>Mozarella Sandwich</item>
-        <item>Peynirli Croissant</item>
-        <item>Peynirli Simit</item>
-        <item>Zeytinli Açma</item>
-    </string-array>
-
-    <string-array name="tatli_cesit_arrays">
-        <item>Balkabaklı Cheesecake</item>
-        <item>Brownie</item>
-        <item>Elmalı Cheesecake</item>
-        <item>Havuçlu Kek</item>
-        <item>Mozaik Pasta</item>
-    </string-array>
-
-    <string-array name="teslimat_adresi">
-        <item>GARANTI BANKASI GENEL MD.</item>
-        <item>MICROSOFT</item>
-    </string-array>
-
-    <string-array name="teslimat_zaman_araligi">
-        <item>14:30 - 15:30</item>
-        <item>15:30 - 16:30</item>
-    </string-array>
+    <string name="scanner_activity">ZBar Scanner - Full Activity</string>
+    <string name="scanner_fragment_activity">ZBar Scanner - Full Fragment Activity</string>
+    <string name="simple_scanner_activity">ZBar Scanner - Simple Activity</string>
+    <string name="simple_scanner_fragment_activity">ZBar Scanner - Simple Fragment Activity</string>
+    <string name="simple_activity_sample">Simple Activity Sample</string>
+    <string name="simple_fragment_sample">Simple Fragment Sample</string>
+    <string name="activity_sample">Full Activity Sample</string>
+    <string name="fragment_sample">Full Fragment Sample</string>
+    <string name="toggle_flash">Flash</string>
+    <string name="flash_on">Flash [ON]</string>
+    <string name="flash_off">Flash [OFF]</string>
+    <string name="auto_focus_on">Auto Focus [ON]</string>
+    <string name="auto_focus_off">Auto Focus [OFF]</string>
+    <string name="formats">Formats</string>
+    <string name="choose_formats">Choose Formats</string>
+    <string name="select_camera">Select a Camera</string>
+    <string name="ok_button">OK</string>
+    <string name="cancel_button">Cancel</string>
 
 </resources>
