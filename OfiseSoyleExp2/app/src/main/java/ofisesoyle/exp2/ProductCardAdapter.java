@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import ofisesoyle_moduls.Urun;
+import ofisesoyle_moduls.Product;
 
 /**
  * Created by Ugur.
@@ -20,14 +20,14 @@ import ofisesoyle_moduls.Urun;
 public class ProductCardAdapter extends BaseAdapter {
 
     private Activity mContext;
-    public ArrayList<Urun> urunList = new ArrayList<Urun>();
+    public ArrayList<Product> productList = new ArrayList<Product>();
     private LayoutInflater mLayoutInflater = null;
     private FragmentManager fragmentManager;
     public MainPageFragment af;
 
-    public ProductCardAdapter(Activity context, ArrayList<Urun> list, FragmentManager fm) {
+    public ProductCardAdapter(Activity context, ArrayList<Product> list, FragmentManager fm) {
         mContext = context;
-        urunList = list;
+        productList = list;
         mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         fragmentManager = fm;
     }
@@ -37,12 +37,12 @@ public class ProductCardAdapter extends BaseAdapter {
     }
     @Override
     public int getCount() {
-        return urunList.size();
+        return productList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return urunList.get(position);
+        return productList.get(position);
     }
 
     @Override
@@ -57,25 +57,25 @@ public class ProductCardAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = mLayoutInflater.inflate(R.layout.product_card, parent, false);
             vh = new YanUrunCardViewHolder();
-            vh.urunIsmi = (TextView) convertView.findViewById(R.id.text_card_urun_isim);
+            vh.urunIsmi = (TextView) convertView.findViewById(R.id.receivable_card_urun_isim);
             vh.urunAciklamalar = (TextView) convertView.findViewById(R.id.text_card_aciklama);
             vh.adet = (TextView) convertView.findViewById(R.id.text_card_adet);
-            vh.fiyat = (TextView) convertView.findViewById(R.id.text_card_fiyat);
+            vh.fiyat = (TextView) convertView.findViewById(R.id.receivable_card_amount);
             vh.sil = (Button) convertView.findViewById(R.id.button_delete);
 
-            final Urun urun = urunList.get(position);
-            vh.urunIsmi.setText(urun.getUrun_adi());
-            vh.urunAciklamalar.setText(urun.getUrun_aciklama());
-            vh.adet.setText(Integer.toString(urun.getAdet()));
-            vh.fiyat.setText(Double.toString(urun.getFiyat()));
+            final Product product = productList.get(position);
+            vh.urunIsmi.setText(product.getProduct_name());
+            vh.urunAciklamalar.setText(product.getProduct_info());
+            vh.adet.setText(Integer.toString(product.getBarcodeNo()));
+            vh.fiyat.setText(Double.toString(product.getProduct_price()));
             vh.sil.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-                    urunList.remove(position);
+                    productList.remove(position);
 //                    refreshSepet();
                 }
             });
-            System.out.println(urun.getUrun_adi());
+            System.out.println(product.getProduct_name());
 
         }
         return convertView;

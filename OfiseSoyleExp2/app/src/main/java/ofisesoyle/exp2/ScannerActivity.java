@@ -17,7 +17,7 @@ import me.dm7.barcodescanner.zbar.BarcodeFormat;
 import me.dm7.barcodescanner.zbar.Result;
 import me.dm7.barcodescanner.zbar.ZBarScannerView;
 
-public class ScannerActivity extends ActionBarActivity implements MessageDialogFragment.MessageDialogListener,
+public class ScannerActivity extends ActionBarActivity implements AddToBasketMessageDialogFragment.MessageDialogListener,
         ZBarScannerView.ResultHandler, FormatSelectorDialogFragment.FormatSelectorDialogListener,
         CameraSelectorDialogFragment.CameraSelectorDialogListener {
     private static final String FLASH_STATE = "FLASH_STATE";
@@ -144,7 +144,7 @@ public class ScannerActivity extends ActionBarActivity implements MessageDialogF
     }
 
     public void showMessageDialog(String message) {
-        DialogFragment fragment = MessageDialogFragment.newInstance("Ürün Onayı", message, this);
+        DialogFragment fragment = AddToBasketMessageDialogFragment.newInstance("Ürün Onayı", message, this);
         fragment.show(getSupportFragmentManager(), "scan_results");
     }
 

@@ -5,28 +5,28 @@ import java.util.ArrayList;
 /**
  * Created by Ugur.
  */
-public class Siparis {
+public class Order {
 
-    public ArrayList<Urun> urunSiparisList;
+    public ArrayList<Product> productSiparisList;
     public String adres;
     public String zaman;
     public String not;
     public double toplamFiyat;
 
-    public Siparis(ArrayList<Urun> urunSiparisList, String adres, String zaman, String not,double toplamFiyat){
-        this.urunSiparisList = urunSiparisList;
+    public Order(ArrayList<Product> productSiparisList, String adres, String zaman, String not, double toplamFiyat){
+        this.productSiparisList = productSiparisList;
         this.adres = adres;
         this.zaman = zaman;
         this.not = not;
         this.toplamFiyat = toplamFiyat;
     }
 
-    public ArrayList<Urun> getUrunSiparisList() {
-        return urunSiparisList;
+    public ArrayList<Product> getProductSiparisList() {
+        return productSiparisList;
     }
 
-    public void setUrunSiparisList(ArrayList<Urun> urunSiparisList) {
-        this.urunSiparisList = urunSiparisList;
+    public void setProductSiparisList(ArrayList<Product> productSiparisList) {
+        this.productSiparisList = productSiparisList;
     }
 
     public String getAdres() {

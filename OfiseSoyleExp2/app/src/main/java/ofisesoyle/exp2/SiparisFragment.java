@@ -7,29 +7,16 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-
-import ofisesoyle_moduls.ShoppingList;
-import ofisesoyle_moduls.Siparis;
-import ofisesoyle_moduls.Urun;
+import ofisesoyle_moduls.Order;
 
 /**
  * Created by Ugur.
  */
 public class SiparisFragment extends Fragment {
 
-    public static Siparis yeniSiparis;
+    public static Order yeniOrder;
     public double toplamFiyat;
 
     @Override
@@ -48,7 +35,7 @@ public class SiparisFragment extends Fragment {
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-     /*    double siparisUcret = calcHizmetBedelliFiyat(calcToplamFiyat(ShoppingList.urunSiparisList));
+     /*    double siparisUcret = calcHizmetBedelliFiyat(calcToplamFiyat(ShoppingList.productSiparisList));
         String siparisUcretS = Double.toString(siparisUcret);
 
        TextView mf = (TextView) getView().findViewById(R.id.text_tutar);
@@ -72,7 +59,7 @@ public class SiparisFragment extends Fragment {
                 String kullaniciNotu = editText_not.getText().toString();
 
 
-                yeniSiparis = new Siparis(ShoppingList.urunSiparisList,secilenAdres,secilenZaman,kullaniciNotu, calcHizmetBedelliFiyat(calcToplamFiyat(ShoppingList.urunSiparisList)));
+                yeniOrder = new Order(ShoppingList.productSiparisList,secilenAdres,secilenZaman,kullaniciNotu, calcHizmetBedelliFiyat(calcToplamFiyat(ShoppingList.productSiparisList)));
 
                 Connection con = null;
                 try {
@@ -81,14 +68,14 @@ public class SiparisFragment extends Fragment {
                         Date date = Calendar.getInstance().getTime();
                         String dateString = date.toString();
 
-                        ArrayList<Urun> gonderilicekUrunler = new ArrayList<Urun>();
-                        gonderilicekUrunler = SiparisFragment.yeniSiparis.getUrunSiparisList();
+                        ArrayList<Product> gonderilicekUrunler = new ArrayList<Product>();
+                        gonderilicekUrunler = SiparisFragment.yeniOrder.getProductSiparisList();
 
                         for(int i = 0; i<= gonderilicekUrunler.size();i++){
-                            String mySQLquery1 = new String("INSERT INTO `orders` VALUES(NULL,'"+SiparisFragment.yeniSiparis.getAdres()+"','"+SiparisFragment.yeniSiparis.getZaman()+"','"+SiparisFragment.yeniSiparis.getNot()+"','"+dateString+ "', '79')");
+                            String mySQLquery1 = new String("INSERT INTO `orders` VALUES(NULL,'"+SiparisFragment.yeniOrder.getAdres()+"','"+SiparisFragment.yeniOrder.getZaman()+"','"+SiparisFragment.yeniOrder.getNot()+"','"+dateString+ "', '79')");
                             con.createStatement().executeQuery(mySQLquery1);
                             int generatedOrderID = 1000+i;
-                            String detailRow = new String( gonderilicekUrunler.get(i).getAdet()+" Adet "+gonderilicekUrunler.get(i).getUrun_aciklama()+"--->"+calcHizmetBedelliFiyat(calcToplamFiyat(ShoppingList.urunSiparisList)));
+                            String detailRow = new String( gonderilicekUrunler.get(i).getBarcodeNo()+" Adet "+gonderilicekUrunler.get(i).getProduct_info()+"--->"+calcHizmetBedelliFiyat(calcToplamFiyat(ShoppingList.productSiparisList)));
                             String mySQLquery2 = new String("INSERT INTO `order_details` VALUES(NULL,'"+generatedOrderID+"','" +detailRow + "')");
                             con.createStatement().executeQuery(mySQLquery2);
                         }
@@ -109,9 +96,9 @@ public class SiparisFragment extends Fragment {
         });
     }
 
-    public double calcToplamFiyat(ArrayList<Urun> uruns){
+    public double calcToplamFiyat(ArrayList<Product> uruns){
         for(int i = 0; i<uruns.size();i++){
-            toplamFiyat += uruns.get(i).getFiyat();
+            toplamFiyat += uruns.get(i).getProduct_price();
         }return toplamFiyat;
     }
     public double calcHizmetBedelliFiyat(double tfiyat){

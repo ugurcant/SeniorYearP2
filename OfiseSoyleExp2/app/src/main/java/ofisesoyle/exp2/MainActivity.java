@@ -13,6 +13,12 @@ import android.view.View;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+
+import ofisesoyle_moduls.AllLists;
+import ofisesoyle_moduls.Order;
+import ofisesoyle_moduls.Product;
+import ofisesoyle_moduls.Receivable;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -24,6 +30,7 @@ public class MainActivity extends ActionBarActivity {
     SlidingTabLayout tabs;
     CharSequence Titles[]={"Ana Sayfa", "Sepetim"};
     int Numboftabs =2;
+    static AllLists list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +56,7 @@ public class MainActivity extends ActionBarActivity {
         });
         // Setting the ViewPager For the SlidingTabsLayout
         tabs.setViewPager(pager);
+
     }
 
     @Override

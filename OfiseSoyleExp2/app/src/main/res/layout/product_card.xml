@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Americano"
-        android:id="@+id/text_card_urun_isim"
+        android:id="@+id/receivable_card_urun_isim"
         android:textColor="@color/tabsScrollColor"
         android:layout_marginLeft="23dp"
         android:layout_marginStart="23dp"
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="6,25TL"
-        android:id="@+id/text_card_fiyat"
+        android:id="@+id/receivable_card_amount"
         android:textColor="@color/tabsScrollColor"
         android:layout_centerVertical="true"
         android:layout_toLeftOf="@+id/button_delete"
@@ -57,8 +57,8 @@
         android:text="Small Text"
         android:id="@+id/text_card_aciklama"
         android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/text_card_urun_isim"
-        android:layout_alignStart="@+id/text_card_urun_isim" />
+        android:layout_alignLeft="@+id/receivable_card_urun_isim"
+        android:layout_alignStart="@+id/receivable_card_urun_isim" />
 
     <TextView
         android:layout_width="wrap_content"

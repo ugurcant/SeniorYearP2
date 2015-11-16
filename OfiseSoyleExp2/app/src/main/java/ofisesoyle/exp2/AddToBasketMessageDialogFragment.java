@@ -5,7 +5,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 
-public class MessageDialogFragment extends DialogFragment {
+public class AddToBasketMessageDialogFragment extends DialogFragment {
     public interface MessageDialogListener {
         public void onDialogPositiveClick(DialogFragment dialog);
     }
@@ -18,8 +18,8 @@ public class MessageDialogFragment extends DialogFragment {
         setRetainInstance(true);
     }
 
-    public static MessageDialogFragment newInstance(String title, String message, MessageDialogListener listener) {
-        MessageDialogFragment fragment = new MessageDialogFragment();
+    public static AddToBasketMessageDialogFragment newInstance(String title, String message, MessageDialogListener listener) {
+        AddToBasketMessageDialogFragment fragment = new AddToBasketMessageDialogFragment();
         fragment.mTitle = title;
         fragment.mMessage = message;
         fragment.mListener = listener;
@@ -33,7 +33,7 @@ public class MessageDialogFragment extends DialogFragment {
                 .setTitle(mTitle).setPositiveButton("Ürünü Ekle", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 if (mListener != null) {
-                    mListener.onDialogPositiveClick(MessageDialogFragment.this);
+                    mListener.onDialogPositiveClick(AddToBasketMessageDialogFragment.this);
                 }
             }
         }).setNegativeButton("Yeniden Dene", new DialogInterface.OnClickListener() {
