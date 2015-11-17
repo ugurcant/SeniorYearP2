@@ -13,7 +13,6 @@ public class PriceList {
        prices.add(new Product(123456,"Latte","Tall",5.5));
        prices.add(new Product(789456,"Latte", "Grande", 6.5));
        prices.add(new Product(458412,"Latte", "Venti", 7.25));
-
     }
     public ArrayList<Product> getPrices(){
         return prices;

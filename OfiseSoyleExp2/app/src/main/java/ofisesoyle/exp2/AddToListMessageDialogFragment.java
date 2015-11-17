@@ -6,24 +6,21 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
-import android.widget.TextView;
+import android.widget.EditText;
 
 import com.etsy.android.grid.StaggeredGridView;
 
 import ofisesoyle_moduls.AllLists;
 import ofisesoyle_moduls.Receivable;
 
-/**
- * Created by ugurcant on 16.11.2015.
- */
 public class AddToListMessageDialogFragment extends DialogFragment {
     public interface MessageDialogListener {
         public void onDialogPositiveClick(DialogFragment dialog);
     }
-    private String receivable_name;
-    private String receivable_amount;
+    String receivable_name = null;
+    String receivable_amount = null;
     private MessageDialogListener mListener;
-    private Receivable receivable;
+    Receivable receivable;
 
     public void onCreate(Bundle state) {
         super.onCreate(state);
@@ -38,23 +35,20 @@ public class AddToListMessageDialogFragment extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        builder.setView(inflater.inflate(R.layout.add_to_list_dialog, null))
-                .setPositiveButton("Listeye Ekle", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        TextView twReceivableName = (TextView) getView().findViewById(R.id.productname_dialog);
-                        receivable_name = (String) twReceivableName.getText();
-                        TextView twReceivableAmount = (TextView) getView().findViewById(R.id.productamount_dialog);
-                        receivable_amount = (String) twReceivableAmount.getText();
-                        receivable.setReceivable_name(receivable_name);
-                        receivable.setAmount(receivable_amount);
-                        MainActivity.list.productShoppingList.add(receivable);
-
-                        if (mListener != null) {
-                            mListener.onDialogPositiveClick(AddToListMessageDialogFragment.this);
-                        }
-                    }
+        builder.setView(inflater.inflate(R.layout.add_to_list_dialog, null));
+        builder.setPositiveButton("Listeye Ekle", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                receivable_name = ((EditText) getView().findViewById(R.id.productname_dialog)).getText().toString();
+                receivable_amount = ((EditText) getActivity().findViewById(R.id.productamount_dialog)).getText().toString();
+                receivable.setReceivable_name(receivable_name);
+                receivable.setAmount(receivable_amount);
+                MainActivity.list.productShoppingList.add(receivable);
+                if (mListener != null) {
+                    mListener.onDialogPositiveClick(AddToListMessageDialogFragment.this);
+                }
+            }
         }).setNegativeButton("Vazgeç", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 // User cancelled the dialog

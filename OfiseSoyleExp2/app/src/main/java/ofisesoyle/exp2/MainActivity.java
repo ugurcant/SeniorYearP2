@@ -1,6 +1,7 @@
 package ofisesoyle.exp2;
 
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
@@ -9,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 import java.net.URL;
 import java.net.URLConnection;
@@ -90,5 +92,4 @@ public class MainActivity extends ActionBarActivity {
         Intent intent = new Intent(this, ScannerActivity.class);
         startActivity(intent);
     }
-
 }
