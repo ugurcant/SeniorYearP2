@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:id="@+id/layout_anaSayfa"
+    android:background="@color/BackgroundWhite">
+
+    <Button
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="Nasıl Çalışır"
+        android:id="@+id/button_nasil_calisir"
+        android:background="@color/ColorPrimary"
+        android:textColor="@color/BackgroundWhite"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="25dp"/>
+
+    <Button
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="Bize Ulaşın"
+        android:id="@+id/button_bize_ulasin"
+        android:background="@color/ColorPrimary"
+        android:textColor="@color/BackgroundWhite"
+        android:layout_marginRight="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_alignTop="@+id/button_nasil_calisir"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="@dimen/abc_action_bar_stacked_tab_max_width"
+        android:layout_height="@dimen/abc_action_bar_subtitle_top_margin_material"
+        android:text="ALIŞVERİŞ LİSTEM"
+        android:id="@+id/button_SList"
+        android:layout_marginTop="68dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/button_nasil_calisir"
+        android:layout_alignStart="@+id/button_nasil_calisir"
+        android:layout_toStartOf="@+id/button_bize_ulasin"
+        android:layout_alignParentStart="false"
+        android:textColor="@color/BackgroundWhite"
+        android:layout_alignRight="@+id/button_bize_ulasin"
+        android:layout_alignEnd="@+id/button_bize_ulasin"
+        android:background="@color/tabsScrollColor"/>
+
+    <Button
+        android:layout_width="@dimen/abc_action_bar_stacked_tab_max_width"
+        android:layout_height="wrap_content"
+        android:text="SEPETE ÜRÜN EKLE"
+        android:id="@+id/button_AddToBasket"
+        android:layout_marginTop="55dp"
+        android:layout_below="@+id/button_SList"
+        android:layout_alignLeft="@+id/button_SList"
+        android:layout_alignStart="@+id/button_SList"
+        android:textColor="@color/BackgroundWhite"
+        android:layout_alignParentStart="false"
+        android:layout_alignRight="@+id/button_bize_ulasin"
+        android:layout_alignEnd="@+id/button_bize_ulasin"
+        android:background="@color/tabsScrollColor"
+        android:onClick="launchScannerActivity"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SEPETİM"
+        android:id="@+id/button_GoToBasket"
+        android:layout_below="@+id/button_AddToBasket"
+        android:layout_marginTop="55dp"
+        android:textColor="@color/BackgroundWhite"
+        android:layout_alignParentStart="false"
+        android:background="@color/tabsScrollColor"
+        android:layout_alignRight="@+id/button_bize_ulasin"
+        android:layout_alignEnd="@+id/button_bize_ulasin"
+        android:layout_alignLeft="@+id/button_AddToBasket"
+        android:layout_alignStart="@+id/button_AddToBasket" />
+
+</RelativeLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ColorPrimaryLight">#FFD700</color>
+    <color name="ColorPrimary">#FFA500</color>
+    <color name="ColorPrimaryDark">#FF8C00</color>
+    <color name="tabsScrollColor">#FF4500</color>
+    <color name="BackgroundWhite">#ffffffff</color>
+    <color name="ColorGrey">#3e3e524f</color>
+    <color name="ColorLightGrey">#fffbfaf8</color>
+    <color name="RedButton">#ffff0600</color>
+    <color name="actionbar_opacity">#DD000000</color>
+</resources>
