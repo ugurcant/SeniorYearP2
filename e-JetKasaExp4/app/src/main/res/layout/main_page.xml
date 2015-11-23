@@ -45,7 +45,8 @@
         android:textColor="@color/BackgroundWhite"
         android:layout_alignRight="@+id/button_bize_ulasin"
         android:layout_alignEnd="@+id/button_bize_ulasin"
-        android:background="@color/tabsScrollColor"/>
+        android:background="@color/tabsScrollColor"
+        android:onClick="launchListActivity"/>
 
     <Button
         android:layout_width="@dimen/abc_action_bar_stacked_tab_max_width"
@@ -76,6 +77,7 @@
         android:layout_alignRight="@+id/button_bize_ulasin"
         android:layout_alignEnd="@+id/button_bize_ulasin"
         android:layout_alignLeft="@+id/button_AddToBasket"
-        android:layout_alignStart="@+id/button_AddToBasket" />
+        android:layout_alignStart="@+id/button_AddToBasket"
+        android:onClick="launchBasketActivity"/>
 
 </RelativeLayout>

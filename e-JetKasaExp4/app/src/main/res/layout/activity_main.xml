@@ -14,7 +14,7 @@
         />
 
     <FrameLayout
-        android:id="@+id/your_placeholder"
+        android:id="@+id/placeholder_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </FrameLayout>

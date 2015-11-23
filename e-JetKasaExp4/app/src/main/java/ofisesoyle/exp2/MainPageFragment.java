@@ -29,27 +29,5 @@ public class MainPageFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Button buttonToShoppingList =(Button) getView().findViewById(R.id.button_SList);
-        buttonToShoppingList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.out.println("Tusa Basildi!! To Shopping List");
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.your_placeholder,new ShoppingListFragment());
-                transaction.addToBackStack(null);
-                transaction.commit();
-            }
-        });
-       /* Button buttonToBasket =(Button) getView().findViewById(R.id.button_GoToBasket);
-        buttonToBasket.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.out.println("Tusa Basildi!! To Basket");
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.your_placeholder, new ShoppingBasketFragment());
-                transaction.addToBackStack(null);
-                transaction.commit();
-            }
-        });*/
-}
+    }
 }

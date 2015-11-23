@@ -48,6 +48,9 @@
             android:configChanges="keyboardHidden|orientation" />
         <activity android:name="io.card.payment.DataEntryActivity" />
 
+        <activity android:name=".PaymentPageActivity" />
+        <activity android:name=".ShoppingListActivity" />
+
     </application>
 
 </manifest>

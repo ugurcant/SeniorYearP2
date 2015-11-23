@@ -3,16 +3,13 @@ package ofisesoyle.exp2;
 /**
  * Created by Ugur.
  */
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.etsy.android.grid.StaggeredGridView;
 
@@ -40,10 +37,8 @@ public class ShoppingBasketFragment extends Fragment{
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         createSepet();
-        Intent myIntent = new Intent(getActivity(), PaymentPageActivity.class);
-        getActivity().startActivity(myIntent);
     }
-    void createSepet(){
+   public void createSepet(){
             System.out.println("Sepet Olustu");
             //productCards.addAll(MainActivity.productShoppingList);
             ProductCardAdapter uCAdapter = new ProductCardAdapter(getActivity(), productCards, ShoppingBasketFragment.this.getFragmentManager());

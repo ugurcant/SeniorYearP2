@@ -22,7 +22,7 @@ public class SiparisFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View v =inflater.inflate(R.layout.shopping_basket,container,false);
+        View v =inflater.inflate(R.layout.shopping_basket_mainpage,container,false);
         v.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
                 return true;
