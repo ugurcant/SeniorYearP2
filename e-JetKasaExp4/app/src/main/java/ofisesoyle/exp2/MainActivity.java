@@ -11,14 +11,15 @@ import android.view.MenuItem;
 import android.view.View;
 
 import ofisesoyle_moduls.AllLists;
+import ofisesoyle_moduls.PriceList;
 
 public class MainActivity extends ActionBarActivity {
 
     // Declaring Your View and Variables
 
     Toolbar toolbar;
-    static AllLists list;
-
+    public static AllLists allLists = new AllLists();
+    public static PriceList priceList = new PriceList();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +29,7 @@ public class MainActivity extends ActionBarActivity {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.add(R.id.placeholder_main, new MainPageFragment());
         ft.commit();
+        priceList.prices();
     }
 
     @Override

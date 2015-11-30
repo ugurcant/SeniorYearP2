@@ -3,6 +3,7 @@ package ofisesoyle.exp2;
 import android.app.Activity;
 import android.support.v4.app.FragmentManager;
 import android.content.Context;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,13 +66,13 @@ public class ProductCardAdapter extends BaseAdapter {
             final Product product = productList.get(position);
             vh.urunIsmi.setText(product.getProduct_name());
             vh.urunAciklamalar.setText(product.getProduct_info());
-            vh.adet.setText(Integer.toString(product.getBarcodeNo()));
+            vh.adet.setText(product.getBarcodeNo());
             vh.fiyat.setText(Double.toString(product.getProduct_price()));
             vh.sil.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
                     productList.remove(position);
-//                    refreshSepet();
+                    refreshBasket();
                 }
             });
             System.out.println(product.getProduct_name());
@@ -80,11 +81,10 @@ public class ProductCardAdapter extends BaseAdapter {
         return convertView;
     }
 
-//    public void refreshSepet() {
-//        Fragment newFragment = new ShoppingBasketFragment();
-//        FragmentTransaction transaction = mContext.getFragmentManager().beginTransaction();
-//        transaction.replace(R.id.fragment_container,newFragment);
-//        transaction.addToBackStack(null);
-//        transaction.commit();
-//    }
+    public void refreshBasket() {
+        System.out.println("refreshBasket e girdi");
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.replace(R.id.placeholder_basket, new ShoppingBasketFragment());
+        ft.commit();
+   }
 }

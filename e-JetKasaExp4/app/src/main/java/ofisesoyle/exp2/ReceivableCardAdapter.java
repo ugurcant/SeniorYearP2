@@ -1,8 +1,7 @@
 package ofisesoyle.exp2;
 
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
+import android.support.v4.app.FragmentTransaction;
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
@@ -13,7 +12,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-
 import ofisesoyle_moduls.Receivable;
 
 public class ReceivableCardAdapter extends BaseAdapter {
@@ -65,8 +63,8 @@ public class ReceivableCardAdapter extends BaseAdapter {
             vh.sil.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-                    MainActivity.list.productShoppingList.remove(receivable);
-                 //   refreshSepet();
+                    MainActivity.allLists.productShoppingList.remove(receivable);
+                    refreshList();
                 }
             });
             System.out.println(receivable.getReceivable_name());
@@ -74,11 +72,10 @@ public class ReceivableCardAdapter extends BaseAdapter {
         return convertView;
     }
 
-   /* public void refreshSepet() {
-       Fragment newFragment = new ShoppingBasketFragment();
-       FragmentTransaction transaction = mContext.getFragmentManager().beginTransaction();
-       transaction.replace(R.id.fragment_container,newFragment);
-       transaction.addToBackStack(null);
-        transaction.commit();
-    }*/
+   public void refreshList() {
+       System.out.println("refreshList e girdi");
+       FragmentTransaction ft = fragmentManager.beginTransaction();
+       ft.replace(R.id.placeholder_list, new ShoppingListFragment());
+       ft.commit();
+    }
 }

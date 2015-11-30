@@ -5,12 +5,12 @@ package ofisesoyle_moduls;
  */
 public class Product {
 
-    public int barcodeNo;
-    public String product_name;
-    public String product_info;
+    public String barcodeNo;
+    public String product_name = null;
+    public String product_info = null;
     public double product_price;
 
-    public Product(int barcodeNo, String product_name, String product_info, double product_price){
+    public Product(String barcodeNo, String product_name, String product_info, double product_price){
         this.barcodeNo = barcodeNo;
         this.product_name = product_name;
         this.product_info = product_info;
@@ -25,11 +25,11 @@ public class Product {
         this.product_name = product_name;
     }
 
-    public int getBarcodeNo() {
+    public String getBarcodeNo() {
         return barcodeNo;
     }
 
-    public void setBarcodeNo(int barcodeNo) {
+    public void setBarcodeNo(String barcodeNo) {
         this.barcodeNo = barcodeNo;
     }
 

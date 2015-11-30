@@ -12,10 +12,10 @@ import com.etsy.android.grid.StaggeredGridView;
 
 import java.util.ArrayList;
 
+import ofisesoyle_moduls.AllLists;
 import ofisesoyle_moduls.Receivable;
 
 public class ShoppingListFragment extends Fragment {
-
     ArrayList<Receivable> receivableCards = new ArrayList<Receivable>();
 
     @Override
@@ -32,15 +32,13 @@ public class ShoppingListFragment extends Fragment {
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //createShoppingList();
+        createShoppingList();
     }
 
    void createShoppingList(){
         System.out.println("Sepet Olustu");
-        receivableCards.addAll(MainActivity.list.productShoppingList);
+        receivableCards.addAll(MainActivity.allLists.productShoppingList);
         ReceivableCardAdapter uCAdapter = new ReceivableCardAdapter(getActivity(), receivableCards, ShoppingListFragment.this.getFragmentManager());
-        // listView = (ListView)getView().findViewById(R.id.list_view);
-        // listView.setAdapter(uCAdapter);
         StaggeredGridView gridView = (StaggeredGridView) getView().findViewById(R.id.grid_view_sl);
         gridView.setAdapter(uCAdapter);
     }

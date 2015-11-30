@@ -139,12 +139,11 @@ public class ScannerActivity extends ActionBarActivity implements AddToBasketMes
             Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
             r.play();
         } catch (Exception e) {}
-       // showMessageDialog("Contents = " + rawResult.getContents() + ", Format = " + rawResult.getBarcodeFormat().getName());
-        showMessageDialog("Contents = " + rawResult.getContents());
+        showMessageDialog(rawResult.getContents());
     }
 
     public void showMessageDialog(String message) {
-        DialogFragment fragment = AddToBasketMessageDialogFragment.newInstance("Ürün Onayı", message, this);
+        DialogFragment fragment = AddToBasketMessageDialogFragment.newInstance(this,message);
         fragment.show(getSupportFragmentManager(), "scan_results");
     }
 

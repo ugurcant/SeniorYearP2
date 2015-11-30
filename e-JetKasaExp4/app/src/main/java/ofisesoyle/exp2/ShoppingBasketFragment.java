@@ -20,7 +20,6 @@ import ofisesoyle_moduls.Product;
 public class ShoppingBasketFragment extends Fragment{
 
     public StaggeredGridView gridView;
-  //  public ListView listView;
     ArrayList<Product> productCards = new ArrayList<Product>();
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,10 +39,8 @@ public class ShoppingBasketFragment extends Fragment{
     }
    public void createSepet(){
             System.out.println("Sepet Olustu");
-            //productCards.addAll(MainActivity.productShoppingList);
-            ProductCardAdapter uCAdapter = new ProductCardAdapter(getActivity(), productCards, ShoppingBasketFragment.this.getFragmentManager());
-           // listView = (ListView)getView().findViewById(R.id.list_view);
-           // listView.setAdapter(uCAdapter);
+            productCards.addAll(MainActivity.allLists.productBasketList);
+            ProductCardAdapter uCAdapter = new ProductCardAdapter(getActivity(), productCards, ShoppingBasketFragment.this.getFragmentManager());;
             gridView = (StaggeredGridView) getView().findViewById(R.id.grid_view);
             gridView.setAdapter(uCAdapter);
     }
