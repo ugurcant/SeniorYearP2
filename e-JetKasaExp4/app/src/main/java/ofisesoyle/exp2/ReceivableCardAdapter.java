@@ -1,6 +1,8 @@
 package ofisesoyle.exp2;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v4.app.FragmentTransaction;
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
@@ -60,11 +62,28 @@ public class ReceivableCardAdapter extends BaseAdapter {
             final Receivable receivable = receivableList.get(position);
             vh.urunIsmi.setText(receivable.getReceivable_name());
             vh.adet.setText(receivable.getAmount());
-            vh.sil.setOnClickListener(new View.OnClickListener(){
+            vh.sil.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    MainActivity.allLists.productShoppingList.remove(receivable);
-                    refreshList();
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(mContext);
+                    builder1.setMessage("Silmek istediğine emin misin?");
+                    builder1.setCancelable(true);
+                    builder1.setPositiveButton("Sil",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    MainActivity.allLists.productShoppingList.remove(receivable);
+                                    refreshList();
+                                    dialog.cancel();
+                                }
+                            });
+                    builder1.setNegativeButton("Vazgeç",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
                 }
             });
             System.out.println(receivable.getReceivable_name());

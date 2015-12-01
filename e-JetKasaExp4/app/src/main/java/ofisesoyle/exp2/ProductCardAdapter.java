@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import ofisesoyle_moduls.BasketProduct;
 import ofisesoyle_moduls.Product;
 
 /**
@@ -21,11 +22,11 @@ import ofisesoyle_moduls.Product;
 public class ProductCardAdapter extends BaseAdapter {
 
     private Activity mContext;
-    public ArrayList<Product> productList = new ArrayList<Product>();
+    public ArrayList<BasketProduct> productList = new ArrayList<BasketProduct>();
     private LayoutInflater mLayoutInflater = null;
     private FragmentManager fragmentManager;
 
-    public ProductCardAdapter(Activity context, ArrayList<Product> list, FragmentManager fm) {
+    public ProductCardAdapter(Activity context, ArrayList<BasketProduct> list, FragmentManager fm) {
         mContext = context;
         productList = list;
         mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -55,19 +56,21 @@ public class ProductCardAdapter extends BaseAdapter {
         YanUrunCardViewHolder vh;
 
         if (convertView == null) {
+
             convertView = mLayoutInflater.inflate(R.layout.product_card, parent, false);
             vh = new YanUrunCardViewHolder();
+
             vh.urunIsmi = (TextView) convertView.findViewById(R.id.receivable_card_urun_isim);
             vh.urunAciklamalar = (TextView) convertView.findViewById(R.id.text_card_aciklama);
             vh.adet = (TextView) convertView.findViewById(R.id.text_card_adet);
             vh.fiyat = (TextView) convertView.findViewById(R.id.receivable_card_amount);
             vh.sil = (Button) convertView.findViewById(R.id.button_delete);
 
-            final Product product = productList.get(position);
-            vh.urunIsmi.setText(product.getProduct_name());
-            vh.urunAciklamalar.setText(product.getProduct_info());
-            vh.adet.setText(product.getBarcodeNo());
-            vh.fiyat.setText(Double.toString(product.getProduct_price()));
+            final BasketProduct product = productList.get(position);
+            vh.urunIsmi.setText(product.getBasketProduct_name());
+            vh.urunAciklamalar.setText(product.getBasketProduct_info());
+            vh.adet.setText(Integer.toString(product.getBasketProduct_amount()));
+            vh.fiyat.setText(Double.toString(product.getBasketProduct_price()*product.getBasketProduct_amount()));
             vh.sil.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
@@ -75,8 +78,7 @@ public class ProductCardAdapter extends BaseAdapter {
                     refreshBasket();
                 }
             });
-            System.out.println(product.getProduct_name());
-
+            System.out.println(product.getBasketProduct_name());
         }
         return convertView;
     }

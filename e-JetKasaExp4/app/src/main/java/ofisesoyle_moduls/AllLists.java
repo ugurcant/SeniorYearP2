@@ -1,10 +1,11 @@
 package ofisesoyle_moduls;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class AllLists {
     public ArrayList<Receivable> productShoppingList = new ArrayList<>();
-    public ArrayList<Product> productBasketList = new ArrayList<>();
+    public ArrayList<BasketProduct> productBasketList = new ArrayList<>();
     public ArrayList<Order> productOrderList = new ArrayList<>();
 
     public ArrayList<Receivable> getProductShoppingList() {
@@ -15,13 +16,21 @@ public class AllLists {
         productShoppingList.add(receivable);
     }
 
-    public ArrayList<Product> getProductBasketList() {
+    public ArrayList<BasketProduct> getProductBasketList() {
         return productBasketList;
     }
 
-    public ArrayList<Product> addToProductBasketList(Product product) {
+    public ArrayList<BasketProduct> addToProductBasketList(BasketProduct product) {
         productBasketList.add(product);
         return productBasketList;
+    }
+
+    public double calculateTotalPrice(){
+        double total = 0;
+        for(int i = 0; i < productBasketList.size();i++ ){
+            total = total + productBasketList.get(i).getBasketProduct_price();
+        }
+        return total;
     }
 
     public ArrayList<Order> getProductOrderList() {

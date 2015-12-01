@@ -3,7 +3,6 @@
     <string name="action_profile">Profil</string>
     <string name="action_hakkimizda">Hakkımızda</string>
 
-
     <string-array name="adet_arrays">
         <item>1</item>
         <item>2</item>
@@ -15,25 +14,16 @@
         <item>8</item>
         <item>9</item>
         <item>10</item>
-    </string-array>
-
-    <string-array name="icecek_cesit_arrays">
-        <item>Americano</item>
-        <item>Cappuccino</item>
-        <item>Caramel Macchiato</item>
-        <item>Chai Latte</item>
-        <item>Fiktered Coffee</item>
-        <item>Iced Americano</item>
-        <item>Iced Caramel Macchiato</item>
-        <item>Iced Chai Latte</item>
-        <item>Iced Latte</item>
-        <item>Iced Mocha</item>
-        <item>Iced White Mocha</item>
-        <item>Latte</item>
-        <item>Mocha</item>
-        <item>Misto</item>
-        <item>White Mocha</item>
-        <item>Ristretto Bianco</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
     </string-array>
 
     <string name="scanner_activity">ZBar Scanner - Full Activity</string>

@@ -21,6 +21,7 @@ import com.paypal.android.sdk.payments.PaymentConfirmation;
 import org.json.JSONException;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -77,22 +78,24 @@ public class PaymentPageActivity extends FragmentActivity {
     }
 
     private PayPalPayment getStuffToBuy(String paymentIntent) {
+
+        ArrayList <PayPalItem> ite = new ArrayList<>();
         //--- include an item list, payment amount details
-        PayPalItem[] items =
-                {
-                        new PayPalItem("sample item #1", 2, new BigDecimal("87.50"), "USD",
+        PayPalItem[] items = {
+                        new PayPalItem("sample item #1", 2, new BigDecimal("87.50"), "TL",
                                 "sku-12345678"),
                         new PayPalItem("free sample item #2", 1, new BigDecimal("0.00"),
-                                "USD", "sku-zero-price"),
+                                "TL", "sku-zero-price"),
                         new PayPalItem("sample item #3 with a longer name", 6, new BigDecimal("37.99"),
-                                "USD", "sku-33333")
+                                "TL", "sku-33333")
                 };
+
         BigDecimal subtotal = PayPalItem.getItemTotal(items);
        // BigDecimal shipping = new BigDecimal("7.21");
        // BigDecimal tax = new BigDecimal("4.67");
        // PayPalPaymentDetails paymentDetails = new PayPalPaymentDetails(shipping, subtotal, tax);
        // BigDecimal amount = subtotal.add(shipping).add(tax);
-        PayPalPayment payment = new PayPalPayment(subtotal, "USD", "sample item", paymentIntent);
+        PayPalPayment payment = new PayPalPayment(subtotal, "TL", "TOPLAM", paymentIntent);
        payment.items(items);
 
         //--- set other optional fields like invoice_number, custom field, and soft_descriptor

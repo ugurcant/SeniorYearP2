@@ -2,9 +2,6 @@ package ofisesoyle_moduls;
 
 import java.util.ArrayList;
 
-/**
- * Created by Ugur.
- */
 public class Order {
 
     public ArrayList<Product> productSiparisList;
