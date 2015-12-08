@@ -10,34 +10,17 @@
         android:id="@+id/placeholder_basket"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/total_price_tw_sb">
+        android:layout_above="@+id/placeholder_basket_price"
+        android:layout_gravity="center_horizontal|bottom">
     </FrameLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="TOPLAM : "
-        android:id="@+id/total_price_tw_sb"
-        android:textColor="@color/ColorPrimaryDark"
-        android:layout_marginBottom="10dp"
-        android:layout_above="@+id/button_finish_shopping"
-        android:layout_gravity="bottom"
-        android:layout_alignStart="@+id/button_finish_shopping"
-        android:layout_alignLeft="@+id/button_finish_shopping"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="10000 TL"
-        android:id="@+id/total_price_sb"
-        android:textColor="@color/ColorPrimaryDark"
-        android:layout_above="@+id/button_finish_shopping"
-        android:layout_alignBottom="@+id/total_price_tw_sb"
-        android:layout_alignEnd="@+id/button_finish_shopping"
-        android:layout_alignRight="@+id/button_finish_shopping"/>
+    <FrameLayout
+        android:id="@+id/placeholder_basket_price"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_above="@+id/button_finish_shopping">
+    </FrameLayout>
 
     <Button
         android:layout_width="310dp"
@@ -46,9 +29,8 @@
         android:id="@+id/button_finish_shopping"
         android:background="@color/ColorPrimary"
         android:textColor="@color/BackgroundWhite"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="25dp"
         android:layout_gravity="center_horizontal|bottom"
-        />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

@@ -19,13 +19,10 @@ import java.util.ArrayList;
 import ofisesoyle_moduls.BasketProduct;
 import ofisesoyle_moduls.Product;
 
-public class ShoppingBasketFragment extends Fragment{
-
-    public StaggeredGridView gridView;
-    ArrayList<BasketProduct> productCards = new ArrayList<BasketProduct>();
+public class ShoppingBasketPriceFragment extends Fragment{
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.shopping_basket,container,false);
+        View v = inflater.inflate(R.layout.shopping_basket_price,container,false);
         v.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
                 return true;
@@ -37,13 +34,11 @@ public class ShoppingBasketFragment extends Fragment{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        createSepet();
+        calculateSepet();
     }
-   public void createSepet(){
-       System.out.println("Sepet Olustu");
-       productCards.addAll(MainActivity.allLists.productBasketList);
-       ProductCardAdapter uCAdapter = new ProductCardAdapter(getActivity(), productCards, ShoppingBasketFragment.this.getFragmentManager());;
-       gridView = (StaggeredGridView) getView().findViewById(R.id.grid_view);
-       gridView.setAdapter(uCAdapter);
+    public void calculateSepet(){
+        System.out.println("Sepet Hesaplandı");
+        final TextView totalPrice = (TextView) getView().findViewById(R.id.total_price_sb);
+        totalPrice.setText(Double.toString(MainActivity.allLists.calculateTotalPrice()) + " TL");
     }
 }

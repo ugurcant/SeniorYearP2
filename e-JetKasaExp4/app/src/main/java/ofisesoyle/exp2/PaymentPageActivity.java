@@ -42,6 +42,10 @@ public class PaymentPageActivity extends FragmentActivity {
         ft.add(R.id.placeholder_basket, new ShoppingBasketFragment());
         ft.commit();
 
+        FragmentTransaction ft2 = getSupportFragmentManager().beginTransaction();
+        ft2.add(R.id.placeholder_basket_price, new ShoppingBasketPriceFragment());
+        ft2.commit();
+
         Button finishShopping = (Button) findViewById(R.id.button_finish_shopping);
         finishShopping.setOnClickListener(new View.OnClickListener() {
 
@@ -65,7 +69,8 @@ public class PaymentPageActivity extends FragmentActivity {
         //   - PAYMENT_INTENT_ORDER to create a payment for authorization and capture
         //     later via calls from your server.
 
-        PayPalPayment finalShoppingBasket = getStuffToBuy(PayPalPayment.PAYMENT_INTENT_SALE);
+        //PayPalPayment finalShoppingBasket = getStuffToBuy(PayPalPayment.PAYMENT_INTENT_SALE);
+        PayPalPayment finalShoppingBasket = getThingToBuy(PayPalPayment.PAYMENT_INTENT_SALE);
 
         Intent intent = new Intent(this, PaymentActivity.class);
 
@@ -77,17 +82,22 @@ public class PaymentPageActivity extends FragmentActivity {
         startActivityForResult(intent, 1);
     }
 
+    private PayPalPayment getThingToBuy(String paymentIntent) {
+        return new PayPalPayment(new BigDecimal(MainActivity.allLists.calculateTotalPrice()), "TRY", "TOPLAM",
+                paymentIntent);
+    }
+
     private PayPalPayment getStuffToBuy(String paymentIntent) {
 
         ArrayList <PayPalItem> ite = new ArrayList<>();
         //--- include an item list, payment amount details
         PayPalItem[] items = {
-                        new PayPalItem("sample item #1", 2, new BigDecimal("87.50"), "TL",
+                        new PayPalItem("sample item #1", 2, new BigDecimal("87.50"), "TRY",
                                 "sku-12345678"),
                         new PayPalItem("free sample item #2", 1, new BigDecimal("0.00"),
-                                "TL", "sku-zero-price"),
+                                "TRY", "sku-zero-price"),
                         new PayPalItem("sample item #3 with a longer name", 6, new BigDecimal("37.99"),
-                                "TL", "sku-33333")
+                                "TRY", "sku-33333")
                 };
 
         BigDecimal subtotal = PayPalItem.getItemTotal(items);
@@ -95,7 +105,7 @@ public class PaymentPageActivity extends FragmentActivity {
        // BigDecimal tax = new BigDecimal("4.67");
        // PayPalPaymentDetails paymentDetails = new PayPalPaymentDetails(shipping, subtotal, tax);
        // BigDecimal amount = subtotal.add(shipping).add(tax);
-        PayPalPayment payment = new PayPalPayment(subtotal, "TL", "TOPLAM", paymentIntent);
+        PayPalPayment payment = new PayPalPayment(subtotal, "TRY", "TOPLAM", paymentIntent);
        payment.items(items);
 
         //--- set other optional fields like invoice_number, custom field, and soft_descriptor

@@ -57,7 +57,7 @@ public class ReceivableCardAdapter extends BaseAdapter {
             vh = new ReceivableCardViewHolder();
             vh.urunIsmi = (TextView) convertView.findViewById(R.id.receivable_card_urun_isim);
             vh.adet = (TextView) convertView.findViewById(R.id.receivable_card_amount);
-            vh.sil = (Button) convertView.findViewById(R.id.button_delete);
+            vh.sil = (Button) convertView.findViewById(R.id.button_delete_receivable);
 
             final Receivable receivable = receivableList.get(position);
             vh.urunIsmi.setText(receivable.getReceivable_name());

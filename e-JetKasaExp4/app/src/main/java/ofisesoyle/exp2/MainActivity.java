@@ -73,8 +73,4 @@ public class MainActivity extends ActionBarActivity {
         Intent intent = new Intent(this, ShoppingListActivity.class);
         startActivity(intent);
     }
-    
-
-    public void refreshSepet() {
-    }
 }

@@ -28,7 +28,7 @@
         android:layout_height="40dp"
         android:text="X"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/button_delete"
+        android:id="@+id/button_delete_product"
         android:layout_marginRight="29dp"
         android:layout_marginEnd="29dp"
         android:background="@color/RedButton"
@@ -45,8 +45,8 @@
         android:id="@+id/receivable_card_amount"
         android:textColor="@color/tabsScrollColor"
         android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/button_delete"
-        android:layout_toStartOf="@+id/button_delete"
+        android:layout_toLeftOf="@+id/button_delete_product"
+        android:layout_toStartOf="@+id/button_delete_product"
         android:layout_marginRight="43dp"
         android:layout_marginEnd="43dp" />
 

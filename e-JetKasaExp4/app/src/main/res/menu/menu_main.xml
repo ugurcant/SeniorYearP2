@@ -4,9 +4,11 @@
     <item
     android:id="@+id/action_profile"
     android:title="@+id/action_profile"
-    android:orderInCategory="100" app:showAsAction="never" />
+    android:orderInCategory="100"
+        app:showAsAction="never" />
     <item
     android:id="@+id/action_hakkimizda"
     android:title="@+id/action_hakkimizda"
-    android:orderInCategory="100" app:showAsAction="never" />
+    android:orderInCategory="100"
+        app:showAsAction="never" />
 </menu>

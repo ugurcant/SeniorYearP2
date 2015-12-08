@@ -1,56 +1,48 @@
 package ofisesoyle_moduls;
 
-import java.util.ArrayList;
-
 public class Order {
+    public String order_name = null;
+    public String order_info = null;
+    public double order_price;
+    public int order_amount;
 
-    public ArrayList<Product> productSiparisList;
-    public String adres;
-    public String zaman;
-    public String not;
-    public double toplamFiyat;
-
-    public Order(ArrayList<Product> productSiparisList, String adres, String zaman, String not, double toplamFiyat){
-        this.productSiparisList = productSiparisList;
-        this.adres = adres;
-        this.zaman = zaman;
-        this.not = not;
-        this.toplamFiyat = toplamFiyat;
+    public Order(String order_name, String order_info, double order_price, int order_amount){
+        this.order_name = order_name;
+        this.order_info = order_info;
+        this.order_price = order_price;
+        this.order_amount = order_amount;
     }
 
-    public ArrayList<Product> getProductSiparisList() {
-        return productSiparisList;
+    public String getOrder_name() {
+        return order_name;
     }
 
-    public void setProductSiparisList(ArrayList<Product> productSiparisList) {
-        this.productSiparisList = productSiparisList;
+    public void setOrder_name(String order_name) {
+        this.order_name = order_name;
     }
 
-    public String getAdres() {
-        return adres;
+    public String getOrder_info() {
+        return order_info;
     }
 
-    public void setAdres(String adres) {
-        this.adres = adres;
+    public void setOrder_info(String order_info) {
+        this.order_info = order_info;
     }
 
-    public String getZaman() {
-        return zaman;
+    public double getOrder_price() {
+        return order_price;
     }
 
-    public void setZaman(String zaman) {
-        this.zaman = zaman;
+    public void setOrder_price(double order_price) {
+        this.order_price = order_price;
     }
 
-    public String getNot() {
-        return not;
+    public int getOrder_amount() {
+        return order_amount;
     }
 
-    public void setNot(String not) {
-        this.not = not;
+    public void setOrder_amount(int order_amount) {
+        this.order_amount = order_amount;
     }
 
-    public double getToplamFiyat(){
-        return toplamFiyat;
-    }
 }

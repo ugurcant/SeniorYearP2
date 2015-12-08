@@ -1,6 +1,8 @@
 package ofisesoyle.exp2;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v4.app.FragmentManager;
 import android.content.Context;
 import android.support.v4.app.FragmentTransaction;
@@ -64,18 +66,35 @@ public class ProductCardAdapter extends BaseAdapter {
             vh.urunAciklamalar = (TextView) convertView.findViewById(R.id.text_card_aciklama);
             vh.adet = (TextView) convertView.findViewById(R.id.text_card_adet);
             vh.fiyat = (TextView) convertView.findViewById(R.id.receivable_card_amount);
-            vh.sil = (Button) convertView.findViewById(R.id.button_delete);
+            vh.sil = (Button) convertView.findViewById(R.id.button_delete_product);
 
             final BasketProduct product = productList.get(position);
             vh.urunIsmi.setText(product.getBasketProduct_name());
             vh.urunAciklamalar.setText(product.getBasketProduct_info());
             vh.adet.setText(Integer.toString(product.getBasketProduct_amount()));
-            vh.fiyat.setText(Double.toString(product.getBasketProduct_price()*product.getBasketProduct_amount()));
-            vh.sil.setOnClickListener(new View.OnClickListener(){
+            vh.fiyat.setText(Double.toString(product.getBasketProduct_price()*product.getBasketProduct_amount()) + " TL");
+            vh.sil.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    productList.remove(position);
-                    refreshBasket();
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(mContext);
+                    builder1.setMessage("Silmek istediğine emin misin?");
+                    builder1.setCancelable(true);
+                    builder1.setPositiveButton("Sil",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    MainActivity.allLists.productBasketList.remove(product);
+                                    refreshBasket();
+                                    dialog.cancel();
+                                }
+                            });
+                    builder1.setNegativeButton("Vazgeç",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
                 }
             });
             System.out.println(product.getBasketProduct_name());
@@ -85,8 +104,14 @@ public class ProductCardAdapter extends BaseAdapter {
 
     public void refreshBasket() {
         System.out.println("refreshBasket e girdi");
+
         FragmentTransaction ft = fragmentManager.beginTransaction();
         ft.replace(R.id.placeholder_basket, new ShoppingBasketFragment());
         ft.commit();
+
+        FragmentTransaction ft2 = fragmentManager.beginTransaction();
+        ft2.replace(R.id.placeholder_basket_price, new ShoppingBasketPriceFragment());
+        ft2.commit();
+
    }
 }
