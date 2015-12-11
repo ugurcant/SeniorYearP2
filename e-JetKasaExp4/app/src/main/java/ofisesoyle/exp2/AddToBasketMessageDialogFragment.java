@@ -2,6 +2,7 @@ package ofisesoyle.exp2;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
@@ -10,7 +11,12 @@ import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import ofisesoyle_moduls.BasketProduct;
+import ofisesoyle_moduls.Config;
 import ofisesoyle_moduls.Product;
 
 public class AddToBasketMessageDialogFragment extends DialogFragment {
@@ -24,6 +30,12 @@ public class AddToBasketMessageDialogFragment extends DialogFragment {
     public String productName = "";
     public String productInfo = "";
     public double productPrice = 0;
+
+    private TextView product_name;
+    private TextView product_info;
+    private Spinner product_amount;
+    private TextView product_price;
+
 
     public void onCreate(Bundle state) {
         super.onCreate(state);
@@ -49,11 +61,12 @@ public class AddToBasketMessageDialogFragment extends DialogFragment {
         final TextView product_barcode = (TextView) rootView.findViewById(R.id.addtobasket_product_barcode);
         product_barcode.setText(mBarcode);
 
-        final TextView product_name = (TextView) rootView.findViewById(R.id.addtobasket_product_name);
-        final TextView product_info = (TextView) rootView.findViewById(R.id.addtobasket_product_info);
-        final Spinner product_amount = (Spinner) rootView.findViewById(R.id.addtobasket_amout);
-        final TextView product_price = (TextView) rootView.findViewById(R.id.addtobasket_product_price);
+        product_name = (TextView) rootView.findViewById(R.id.addtobasket_product_name);
+        product_info = (TextView) rootView.findViewById(R.id.addtobasket_product_info);
+        product_amount = (Spinner) rootView.findViewById(R.id.addtobasket_amout);
+        product_price = (TextView) rootView.findViewById(R.id.addtobasket_product_price);
 
+       // Array List Control
         if(MainActivity.priceList.findFromPriceList(mBarcode) == true){
             productName = MainActivity.priceList.getFromPriceList(mBarcode).getProduct_name();
             productInfo = MainActivity.priceList.getFromPriceList(mBarcode).getProduct_info();
@@ -68,6 +81,9 @@ public class AddToBasketMessageDialogFragment extends DialogFragment {
             product_info.setText("Unknown Product");
             product_price.setText(String.valueOf(productPrice)+ " TL");
         }
+
+        // Database Control
+        //getProduct();
 
         builder.setPositiveButton("Sepete Ekle", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
@@ -90,6 +106,46 @@ public class AddToBasketMessageDialogFragment extends DialogFragment {
             }
         });
         return builder.create();
+    }
+
+    private void getProduct(){
+        class GetProduct extends AsyncTask<Void,Void,String> {
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+            }
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                createProduct(s);
+            }
+            @Override
+            protected String doInBackground(Void... params) {
+                RequestHandler rh = new RequestHandler();
+                String s = rh.sendGetRequestParam(Config.URL_GET_PRODUCT,mBarcode);
+                return s;
+            }
+        }
+        GetProduct gp = new GetProduct();
+        gp.execute();
+    }
+
+    private void createProduct(String json){
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+            JSONArray result = jsonObject.getJSONArray(Config.TAG_JSON_ARRAY);
+            JSONObject c = result.getJSONObject(0);
+
+            String pName = c.getString(Config.TAG_NAME);
+            String pInfo = c.getString(Config.TAG_INF);
+            String pPriceS = c.getString(Config.TAG_PRICE);
+
+            product_name.setText(pName);
+            product_info.setText(pInfo);
+            product_price.setText(pPriceS + " TL");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }
 

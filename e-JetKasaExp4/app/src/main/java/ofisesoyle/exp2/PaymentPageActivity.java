@@ -1,6 +1,9 @@
 package ofisesoyle.exp2;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -8,6 +11,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.paypal.android.sdk.payments.PayPalAuthorization;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
@@ -28,11 +32,17 @@ import java.util.Set;
 
 public class PaymentPageActivity extends FragmentActivity {
 
+    private static final int REQUEST_CODE_PAYMENT = 1;
+    private static final String TAG = "paymentExample";
+    private static final String CONFIG_ENVIRONMENT = PayPalConfiguration.ENVIRONMENT_NO_NETWORK;
+    private static final String CONFIG_CLIENT_ID = "credential from developer.paypal.com";
+
     private static PayPalConfiguration config = new PayPalConfiguration()
-            .environment(PayPalConfiguration.ENVIRONMENT_NO_NETWORK).clientId("<YOUR_CLIENT_ID>");
+            .environment(CONFIG_ENVIRONMENT).clientId(CONFIG_CLIENT_ID);
     // Start with mock environment.  When ready, switch to sandbox (ENVIRONMENT_SANDBOX)
     // or live (ENVIRONMENT_PRODUCTION)
 
+    //private Context mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,7 +89,7 @@ public class PaymentPageActivity extends FragmentActivity {
 
         intent.putExtra(PaymentActivity.EXTRA_PAYMENT, finalShoppingBasket);
 
-        startActivityForResult(intent, 1);
+        startActivityForResult(intent, REQUEST_CODE_PAYMENT);
     }
 
     private PayPalPayment getThingToBuy(String paymentIntent) {
@@ -126,31 +136,7 @@ public class PaymentPageActivity extends FragmentActivity {
 
     @Override
     protected void onActivityResult (int requestCode, int resultCode, Intent data) {
-        if (resultCode == Activity.RESULT_OK) {
-            PaymentConfirmation confirm = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
-            if (confirm != null) {
-                try {
-                    Log.i("paymentExample", confirm.toJSONObject().toString(4));
-
-                    // TODO: send 'confirm' to your server for verification.
-                    // see https://developer.paypal.com/webapps/developer/docs/integration/mobile/verify-mobile-payment/
-                    // for more details.
-
-                } catch (JSONException e) {
-                    Log.e("paymentExample", "an extremely unlikely failure occurred: ", e);
-                }
-            }
-        }
-        else if (resultCode == Activity.RESULT_CANCELED) {
-            Log.i("paymentExample", "The user canceled.");
-        }
-        else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID) {
-            Log.i("paymentExample", "An invalid Payment or PayPalConfiguration was submitted. Please see the docs.");
-        }
-    }
-
-    /*@Override
-    protected void onActivityResult(int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE_PAYMENT) {
             if (resultCode == Activity.RESULT_OK) {
                 PaymentConfirmation confirm =
                         data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
@@ -158,7 +144,7 @@ public class PaymentPageActivity extends FragmentActivity {
                     try {
                         Log.i(TAG, confirm.toJSONObject().toString(4));
                         Log.i(TAG, confirm.getPayment().toJSONObject().toString(4));
-                        *//**
+                        /**
                          *  TODO: send 'confirm' (and possibly confirm.getPayment() to your server for verification
                          * or consent completion.
                          * See https://developer.paypal.com/webapps/developer/docs/integration/mobile/verify-mobile-payment/
@@ -166,24 +152,24 @@ public class PaymentPageActivity extends FragmentActivity {
                          *
                          * For sample mobile backend interactions, see
                          * https://github.com/paypal/rest-api-sdk-python/tree/master/samples/mobile_backend
-                         *//*
+                         */
                         Toast.makeText(
                                 getApplicationContext(),
-                                "PaymentConfirmation info received from PayPal", Toast.LENGTH_LONG)
-                                .show();
+                                "Ödeme Alınmıştır, Teşekkürler", Toast.LENGTH_LONG).show();
 
                     } catch (JSONException e) {
                         Log.e(TAG, "an extremely unlikely failure occurred: ", e);
                     }
                 }
             } else if (resultCode == Activity.RESULT_CANCELED) {
-                Log.i(TAG, "The user canceled.");
+                Log.i(TAG, "Kullanıcı iptal etti");
             } else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID) {
                 Log.i(
                         TAG,
                         "An invalid Payment or PayPalConfiguration was submitted. Please see the docs.");
             }
-        }*/
+        }
+    }
 
     private void sendAuthorizationToServer(PayPalAuthorization authorization) {
 
