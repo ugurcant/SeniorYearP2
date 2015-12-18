@@ -14,74 +14,61 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Americano"
-        android:id="@+id/receivable_card_urun_isim"
+        android:id="@+id/receivable_card_urun_isim_pf"
         android:textColor="@color/tabsScrollColor"
         android:layout_marginLeft="23dp"
         android:layout_marginStart="23dp"
-        android:layout_above="@+id/text_card_aciklama"
+        android:layout_above="@+id/text_card_aciklama_pf"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textStyle="bold" />
-
-    <Button
-        style="@style/Widget.AppCompat.ActionButton.CloseMode"
-        android:layout_width="50dp"
-        android:layout_height="40dp"
-        android:text="Sil"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/button_delete_product"
-        android:layout_marginRight="29dp"
-        android:layout_marginEnd="29dp"
-        android:background="@color/RedButton"
-        android:textColor="@color/BackgroundWhite"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:gravity="center_vertical|center_horizontal"
-        android:textStyle="bold|italic" />
+        android:textStyle="bold"
+        android:layout_alignRight="@+id/receivable_card_price_pf"
+        android:layout_alignEnd="@+id/receivable_card_price_pf" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="6,25TL"
-        android:id="@+id/receivable_card_amount"
+        android:id="@+id/receivable_card_price_pf"
         android:textColor="@color/tabsScrollColor"
+        android:layout_marginRight="27dp"
+        android:layout_marginEnd="27dp"
+        android:textStyle="bold"
         android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/button_delete_product"
-        android:layout_toStartOf="@+id/button_delete_product"
-        android:layout_marginRight="43dp"
-        android:layout_marginEnd="43dp"
-        android:textStyle="bold" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Small Text"
-        android:id="@+id/text_card_aciklama"
+        android:id="@+id/text_card_aciklama_pf"
         android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/receivable_card_urun_isim"
-        android:layout_alignStart="@+id/receivable_card_urun_isim" />
+        android:layout_alignLeft="@+id/receivable_card_urun_isim_pf"
+        android:layout_alignStart="@+id/receivable_card_urun_isim_pf"
+        android:layout_toLeftOf="@+id/receivable_card_price_pf"
+        android:layout_toStartOf="@+id/receivable_card_price_pf" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Adet : "
-        android:id="@+id/string_adet"
-        android:layout_below="@+id/text_card_aciklama"
-        android:layout_alignLeft="@+id/text_card_aciklama"
-        android:layout_alignStart="@+id/text_card_aciklama" />
+        android:id="@+id/string_adet_pf"
+        android:layout_below="@+id/text_card_aciklama_pf"
+        android:layout_alignLeft="@+id/text_card_aciklama_pf"
+        android:layout_alignStart="@+id/text_card_aciklama_pf" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="8"
-        android:id="@+id/text_card_adet"
-        android:layout_alignTop="@+id/string_adet"
-        android:layout_toRightOf="@+id/string_adet"
-        android:layout_toEndOf="@+id/string_adet" />
+        android:id="@+id/text_card_adet_pf"
+        android:layout_alignTop="@+id/string_adet_pf"
+        android:layout_toRightOf="@+id/string_adet_pf"
+        android:layout_toEndOf="@+id/string_adet_pf" />
 
 </RelativeLayout>

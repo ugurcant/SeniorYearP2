@@ -92,12 +92,11 @@ public class RequestHandler {
     }
 
     public String sendGetRequestParam(String requestURL, String id){
-        StringBuilder sb =new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         try {
             URL url = new URL(requestURL+id);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-
             String s;
             while((s=bufferedReader.readLine())!=null){
                 sb.append(s+"\n");

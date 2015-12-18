@@ -16,7 +16,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import ofisesoyle_moduls.BasketProduct;
-import ofisesoyle_moduls.Product;
 
 /**
  * Created by Ugur.
@@ -34,7 +33,7 @@ public class ProductCardAdapter extends BaseAdapter {
         mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         fragmentManager = fm;
     }
-    static class YanUrunCardViewHolder {
+    static class ProductCardViewHolder {
         TextView urunIsmi, urunAciklamalar, fiyat, adet;
         Button sil;
     }
@@ -55,12 +54,12 @@ public class ProductCardAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        YanUrunCardViewHolder vh;
+        ProductCardViewHolder vh;
 
         if (convertView == null) {
 
             convertView = mLayoutInflater.inflate(R.layout.product_card, parent, false);
-            vh = new YanUrunCardViewHolder();
+            vh = new ProductCardViewHolder();
 
             vh.urunIsmi = (TextView) convertView.findViewById(R.id.receivable_card_urun_isim);
             vh.urunAciklamalar = (TextView) convertView.findViewById(R.id.text_card_aciklama);

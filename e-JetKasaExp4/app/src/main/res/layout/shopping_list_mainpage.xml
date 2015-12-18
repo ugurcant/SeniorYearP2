@@ -17,13 +17,15 @@
     <Button
         android:layout_width="310dp"
         android:layout_height="wrap_content"
-        android:text="Listeye Ürün Ekle"
+        android:text="Lİsteye Ürün Ekle"
         android:id="@+id/button_add_to_list"
         android:background="@color/ColorPrimary"
         android:textColor="@color/BackgroundWhite"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="25dp"
         android:layout_gravity="center_horizontal|bottom"
-        />
+        android:gravity="center_vertical|center_horizontal"
+        android:textStyle="bold|italic"
+        android:textSize="20dp" />
 
 </RelativeLayout>

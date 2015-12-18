@@ -2,14 +2,14 @@ package ofisesoyle_moduls;
 
 public class BasketProduct {
 
-    public String barcodeNo;
+    public String product_barcodeNo;
     public String product_name = null;
     public String product_info = null;
     public double product_price;
     public int product_amount;
 
-    public BasketProduct(String barcodeNo, String product_name, String product_info, double product_price, int product_amount){
-        this.barcodeNo = barcodeNo;
+    public BasketProduct(String product_barcodeNo, String product_name, String product_info, double product_price, int product_amount){
+        this.product_barcodeNo = product_barcodeNo;
         this.product_name = product_name;
         this.product_info = product_info;
         this.product_price = product_price;
@@ -29,11 +29,11 @@ public class BasketProduct {
     }
 
     public String getBasketBarcodeNo() {
-        return barcodeNo;
+        return product_barcodeNo;
     }
 
     public void setBasketBarcodeNo(String barcodeNo) {
-        this.barcodeNo = barcodeNo;
+        this.product_barcodeNo = barcodeNo;
     }
 
     public String getBasketProduct_info() {return product_info;}

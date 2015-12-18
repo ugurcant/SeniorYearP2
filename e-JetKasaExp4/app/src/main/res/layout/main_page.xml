@@ -16,7 +16,8 @@
         android:background="@color/ColorPrimary"
         android:textColor="@color/BackgroundWhite"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="25dp"/>
+        android:layout_marginLeft="25dp"
+        android:textStyle="bold" />
 
     <Button
         android:layout_width="140dp"
@@ -29,7 +30,8 @@
         android:layout_marginEnd="25dp"
         android:layout_alignTop="@+id/button_nasil_calisir"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:textStyle="bold" />
 
     <Button
         android:layout_width="@dimen/abc_action_bar_stacked_tab_max_width"
@@ -46,7 +48,9 @@
         android:layout_alignRight="@+id/button_bize_ulasin"
         android:layout_alignEnd="@+id/button_bize_ulasin"
         android:background="@color/tabsScrollColor"
-        android:onClick="launchListActivity"/>
+        android:onClick="launchListActivity"
+        android:textStyle="bold"
+        android:textSize="18dp" />
 
     <Button
         android:layout_width="@dimen/abc_action_bar_stacked_tab_max_width"
@@ -62,7 +66,9 @@
         android:layout_alignRight="@+id/button_bize_ulasin"
         android:layout_alignEnd="@+id/button_bize_ulasin"
         android:background="@color/tabsScrollColor"
-        android:onClick="launchScannerActivity"/>
+        android:onClick="launchScannerActivity"
+        android:textStyle="bold"
+        android:textSize="18dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -78,6 +84,8 @@
         android:layout_alignEnd="@+id/button_bize_ulasin"
         android:layout_alignLeft="@+id/button_AddToBasket"
         android:layout_alignStart="@+id/button_AddToBasket"
-        android:onClick="launchBasketActivity"/>
+        android:onClick="launchBasketActivity"
+        android:textStyle="bold"
+        android:textSize="18dp" />
 
 </RelativeLayout>

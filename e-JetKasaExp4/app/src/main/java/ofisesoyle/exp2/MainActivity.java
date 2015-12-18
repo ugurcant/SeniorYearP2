@@ -29,7 +29,7 @@ public class MainActivity extends ActionBarActivity {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.add(R.id.placeholder_main, new MainPageFragment());
         ft.commit();
-        priceList.prices();
+        //priceList.prices();
     }
 
     @Override

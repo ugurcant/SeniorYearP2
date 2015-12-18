@@ -31,6 +31,8 @@
         android:textColor="@color/BackgroundWhite"
         android:layout_gravity="center_horizontal|bottom"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textSize="18dp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

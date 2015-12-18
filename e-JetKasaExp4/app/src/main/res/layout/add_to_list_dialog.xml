@@ -11,8 +11,10 @@ android:layout_height="wrap_content">
     android:text=" Ürün Adı ve Miktarını Giriniz"
     android:id="@+id/addtolist_tw"
     android:textColor="@color/BackgroundWhite"
-    android:textSize="25dp"
-    android:textAlignment="center" />
+    android:textSize="20dp"
+    android:textAlignment="center"
+    android:gravity="center_vertical|center_horizontal"
+    android:textStyle="bold|italic" />
 <EditText
     android:id="@+id/productname_dialog"
     android:layout_width="match_parent"

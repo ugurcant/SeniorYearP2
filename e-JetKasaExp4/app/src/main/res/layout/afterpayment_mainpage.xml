@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ofisesoyle.exp2.PaymentFinishedFragment"
+    android:background="@color/BackgroundWhite">
+
+    <FrameLayout
+        android:id="@+id/placeholder_ap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_above="@+id/button_backto_mainpage"
+        android:layout_below="@+id/text_paymentfinished_products">
+    </FrameLayout>
+
+    <Button
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:text="Ana Menüye Dön"
+        android:id="@+id/button_backto_mainpage"
+        android:background="@color/ColorPrimary"
+        android:textColor="@color/BackgroundWhite"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textSize="18dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Ödemesi Tamamlanan Ürünler : "
+        android:id="@+id/text_paymentfinished_products"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:gravity="center_vertical|center_horizontal"
+        android:textColor="@color/ColorPrimaryDark"
+        android:textStyle="bold" />
+
+</RelativeLayout>

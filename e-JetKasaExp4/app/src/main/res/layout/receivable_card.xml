@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="90dp"
     android:background="@color/ColorPrimaryLight"
-    card_view:cardCornerRadius="4dp">
+    card_view:cardCornerRadius="4dp"
+    android:gravity="center_vertical|center_horizontal">
 
 
     <TextView
@@ -33,7 +34,9 @@
         android:textColor="@color/BackgroundWhite"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:gravity="center_vertical|center_horizontal"
+        android:textStyle="bold|italic" />
 
     <TextView
         android:layout_width="wrap_content"

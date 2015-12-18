@@ -2,6 +2,7 @@ package ofisesoyle.exp2;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -36,7 +37,6 @@ public class AddToBasketMessageDialogFragment extends DialogFragment {
     private Spinner product_amount;
     private TextView product_price;
 
-
     public void onCreate(Bundle state) {
         super.onCreate(state);
         setRetainInstance(true);
@@ -63,9 +63,10 @@ public class AddToBasketMessageDialogFragment extends DialogFragment {
 
         product_name = (TextView) rootView.findViewById(R.id.addtobasket_product_name);
         product_info = (TextView) rootView.findViewById(R.id.addtobasket_product_info);
-        product_amount = (Spinner) rootView.findViewById(R.id.addtobasket_amout);
         product_price = (TextView) rootView.findViewById(R.id.addtobasket_product_price);
+        product_amount = (Spinner) rootView.findViewById(R.id.addtobasket_amout);
 
+/*
        // Array List Control
         if(MainActivity.priceList.findFromPriceList(mBarcode) == true){
             productName = MainActivity.priceList.getFromPriceList(mBarcode).getProduct_name();
@@ -81,9 +82,9 @@ public class AddToBasketMessageDialogFragment extends DialogFragment {
             product_info.setText("Unknown Product");
             product_price.setText(String.valueOf(productPrice)+ " TL");
         }
-
+*/
         // Database Control
-        //getProduct();
+        getProduct(mBarcode);
 
         builder.setPositiveButton("Sepete Ekle", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
@@ -92,9 +93,10 @@ public class AddToBasketMessageDialogFragment extends DialogFragment {
                     product.setBasketBarcodeNo(product_barcode.getText().toString());
                     product.setBasketProduct_name(product_name.getText().toString());
                     product.setBasketProduct_info(product_info.getText().toString());
-                    product.setBasketProduct_price(productPrice);
+                    product.setBasketProduct_price(Double.parseDouble(product_price.getText().toString()));
                     product.setBasketProduct_amount(Integer.parseInt(productAmount));
                     System.out.println(product.getBasketProduct_name());
+                    System.out.println(Double.parseDouble(product_price.getText().toString())*2);
                     MainActivity.allLists.addToProductBasketList(product);
                     mListener.onDialogPositiveClick(AddToBasketMessageDialogFragment.this);
                 }
@@ -108,23 +110,22 @@ public class AddToBasketMessageDialogFragment extends DialogFragment {
         return builder.create();
     }
 
-    private void getProduct(){
+    private void getProduct(final String barcodeS){
         class GetProduct extends AsyncTask<Void,Void,String> {
             @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
+            protected String doInBackground(Void... params) {
+                RequestHandler rh = new RequestHandler();
+                String s = rh.sendGetRequestParam(Config.URL_GET_PRODUCT,barcodeS);
+                System.out.println("doInBackground Barcode: " + barcodeS);
+                return s;
             }
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 createProduct(s);
+                System.out.println("onPostExecute: " + s);
             }
-            @Override
-            protected String doInBackground(Void... params) {
-                RequestHandler rh = new RequestHandler();
-                String s = rh.sendGetRequestParam(Config.URL_GET_PRODUCT,mBarcode);
-                return s;
-            }
+
         }
         GetProduct gp = new GetProduct();
         gp.execute();
@@ -142,7 +143,9 @@ public class AddToBasketMessageDialogFragment extends DialogFragment {
 
             product_name.setText(pName);
             product_info.setText(pInfo);
-            product_price.setText(pPriceS + " TL");
+            product_price.setText(pPriceS);
+
+            System.out.println("ProductName: " + pName);
         } catch (JSONException e) {
             e.printStackTrace();
         }

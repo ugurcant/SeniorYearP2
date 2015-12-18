@@ -7,22 +7,20 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.etsy.android.grid.StaggeredGridView;
 
 import java.util.ArrayList;
 
 import ofisesoyle_moduls.BasketProduct;
-import ofisesoyle_moduls.Product;
 
-public class ShoppingBasketFragment extends Fragment{
+public class PaymentFinishedFragment extends Fragment{
 
     public StaggeredGridView gridView;
-    ArrayList<BasketProduct> productCards = new ArrayList<BasketProduct>();
+    ArrayList<BasketProduct> aPproductCards = new ArrayList<BasketProduct>();
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.shopping_basket,container,false);
+        View v = inflater.inflate(R.layout.afterpayment_list,container,false);
         v.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
                 return true;
@@ -34,13 +32,13 @@ public class ShoppingBasketFragment extends Fragment{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        createSepet();
+        createAPSepet();
     }
-   public void createSepet(){
-       System.out.println("Sepet Olustu");
-       productCards.addAll(MainActivity.allLists.productBasketList);
-       ProductCardAdapter uCAdapter = new ProductCardAdapter(getActivity(), productCards, ShoppingBasketFragment.this.getFragmentManager());;
-       gridView = (StaggeredGridView) getView().findViewById(R.id.grid_view);
-       gridView.setAdapter(uCAdapter);
+    public void createAPSepet(){
+        System.out.println("AP Sepet Olustu");
+        aPproductCards.addAll(MainActivity.allLists.productBasketList);
+        PaymentFinishedCardAdapter uCAdapter = new PaymentFinishedCardAdapter(getActivity(), aPproductCards, PaymentFinishedFragment.this.getFragmentManager());;
+        gridView = (StaggeredGridView) getView().findViewById(R.id.grid_view);
+        gridView.setAdapter(uCAdapter);
     }
 }
