@@ -18,7 +18,6 @@ import org.json.JSONObject;
 
 import ofisesoyle_moduls.BasketProduct;
 import ofisesoyle_moduls.Config;
-import ofisesoyle_moduls.Product;
 
 public class AddToBasketMessageDialogFragment extends DialogFragment {
     public interface MessageDialogListener {
@@ -104,7 +103,7 @@ public class AddToBasketMessageDialogFragment extends DialogFragment {
         });
         builder.setNegativeButton("Yeniden Tara", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                // User cancelled the dialog
+                dialog.cancel();
             }
         });
         return builder.create();

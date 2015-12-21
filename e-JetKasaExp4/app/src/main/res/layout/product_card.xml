@@ -25,20 +25,20 @@
 
     <Button
         style="@style/Widget.AppCompat.ActionButton.CloseMode"
-        android:layout_width="50dp"
-        android:layout_height="40dp"
-        android:text="Sil"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:text=" X"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/button_delete_product"
-        android:layout_marginRight="29dp"
-        android:layout_marginEnd="29dp"
         android:background="@color/RedButton"
         android:textColor="@color/BackgroundWhite"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:gravity="center_vertical|center_horizontal"
-        android:textStyle="bold|italic" />
+        android:textStyle="bold|italic"
+        android:layout_marginRight="26dp"
+        android:layout_marginEnd="26dp"
+        android:layout_alignTop="@+id/button_reduce_product"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -47,12 +47,10 @@
         android:text="6,25TL"
         android:id="@+id/receivable_card_amount"
         android:textColor="@color/tabsScrollColor"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/button_delete_product"
-        android:layout_toStartOf="@+id/button_delete_product"
-        android:layout_marginRight="43dp"
-        android:layout_marginEnd="43dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_alignTop="@+id/receivable_card_urun_isim"
+        android:layout_alignRight="@+id/button_delete_product"
+        android:layout_alignEnd="@+id/button_delete_product" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -62,7 +60,9 @@
         android:id="@+id/text_card_aciklama"
         android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/receivable_card_urun_isim"
-        android:layout_alignStart="@+id/receivable_card_urun_isim" />
+        android:layout_alignStart="@+id/receivable_card_urun_isim"
+        android:layout_toStartOf="@+id/receivable_card_amount"
+        android:layout_toLeftOf="@+id/receivable_card_amount" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -83,5 +83,38 @@
         android:layout_alignTop="@+id/string_adet"
         android:layout_toRightOf="@+id/string_adet"
         android:layout_toEndOf="@+id/string_adet" />
+
+    <Button
+        style="@style/Widget.AppCompat.ActionButton.CloseMode"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:text=" +"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/button_augment_product"
+        android:background="@color/RedButton"
+        android:textColor="@color/BackgroundWhite"
+        android:gravity="center_vertical|center_horizontal"
+        android:textStyle="bold|italic"
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_alignTop="@+id/button_reduce_product"
+        android:layout_toLeftOf="@+id/button_reduce_product"
+        android:layout_toStartOf="@+id/button_reduce_product" />
+
+    <Button
+        style="@style/Widget.AppCompat.ActionButton.CloseMode"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:text=" -"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/button_reduce_product"
+        android:background="@color/RedButton"
+        android:textColor="@color/BackgroundWhite"
+        android:textStyle="bold|italic"
+        android:textSize="25dp"
+        android:gravity="center"
+        android:layout_below="@+id/text_card_aciklama"
+        android:layout_toLeftOf="@+id/button_delete_product"
+        android:layout_toStartOf="@+id/button_delete_product" />
 
 </RelativeLayout>

@@ -35,7 +35,7 @@ public class ProductCardAdapter extends BaseAdapter {
     }
     static class ProductCardViewHolder {
         TextView urunIsmi, urunAciklamalar, fiyat, adet;
-        Button sil;
+        Button sil, reduce, augment;
     }
     @Override
     public int getCount() {
@@ -66,12 +66,29 @@ public class ProductCardAdapter extends BaseAdapter {
             vh.adet = (TextView) convertView.findViewById(R.id.text_card_adet);
             vh.fiyat = (TextView) convertView.findViewById(R.id.receivable_card_amount);
             vh.sil = (Button) convertView.findViewById(R.id.button_delete_product);
+            vh.reduce = (Button) convertView.findViewById(R.id.button_reduce_product);
+            vh.augment = (Button) convertView.findViewById(R.id.button_augment_product);
 
             final BasketProduct product = productList.get(position);
             vh.urunIsmi.setText(product.getBasketProduct_name());
             vh.urunAciklamalar.setText(product.getBasketProduct_info());
             vh.adet.setText(Integer.toString(product.getBasketProduct_amount()));
             vh.fiyat.setText(Double.toString(product.getBasketProduct_price()*product.getBasketProduct_amount()) + " TL");
+            vh.reduce.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if ((product.getBasketProduct_amount() - 1) == 0) MainActivity.allLists.productBasketList.remove(product);
+                    else{product.setBasketProduct_amount(product.getBasketProduct_amount() - 1);}
+                    refreshBasket();
+                }
+            });
+            vh.augment.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    product.setBasketProduct_amount(product.getBasketProduct_amount() + 1);
+                    refreshBasket();
+                }
+            });
             vh.sil.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
