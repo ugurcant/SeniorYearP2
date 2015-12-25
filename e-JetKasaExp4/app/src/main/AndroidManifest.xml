@@ -14,10 +14,11 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        android:supportsRtl="true">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,6 +49,8 @@
             android:configChanges="keyboardHidden|orientation" />
         <activity android:name="io.card.payment.DataEntryActivity" />
 
+        <activity android:name=".MainActivity" />
+        <activity android:name=".RegisterActivity" />
         <activity android:name=".PaymentPageActivity" />
         <activity android:name=".ShoppingListActivity" />
         <activity android:name=".PaymentFinishedActivity" />

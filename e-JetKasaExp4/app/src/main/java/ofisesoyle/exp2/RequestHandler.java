@@ -68,7 +68,6 @@ public class RequestHandler {
                     sb.append(response);
                 }
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -76,7 +75,7 @@ public class RequestHandler {
     }
 
     public String sendGetRequest(String requestURL){
-        StringBuilder sb =new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         try {
             URL url = new URL(requestURL);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();

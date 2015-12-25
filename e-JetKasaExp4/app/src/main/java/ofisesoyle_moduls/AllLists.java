@@ -1,8 +1,15 @@
 package ofisesoyle_moduls;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import java.util.ArrayList;
 
-public class AllLists {
+public class AllLists{
     public ArrayList<Receivable> productShoppingList = new ArrayList<>();
     public ArrayList<BasketProduct> productBasketList = new ArrayList<>();
     public ArrayList<AllOrders> productAllOrdersList = new ArrayList<>();
@@ -35,4 +42,5 @@ public class AllLists {
         productAllOrdersList.add(allOrders);
         return productAllOrdersList;
     }
+
 }

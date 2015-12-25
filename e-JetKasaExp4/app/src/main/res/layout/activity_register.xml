@@ -1,0 +1,97 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/BackgroundWhite"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true"
+    android:layout_gravity="center_vertical"
+    android:orientation="vertical"
+    android:paddingTop="56dp"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp"
+    android:weightSum="1">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Adınız:"
+        android:textStyle="bold|italic"/>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextRegisterFirstName" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Soyadınız:"
+        android:textStyle="bold|italic"/>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextRegisterLastName" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kullanıcı Adınız:"
+        android:textStyle="bold|italic"/>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextRegisterUserName" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Şifre Giriniz"
+        android:textStyle="bold|italic"/>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:id="@+id/editTextRegisterPassword" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="E-Mailiniz:"
+        android:textStyle="bold|italic"/>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:id="@+id/editTextRegisterEmail" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="KAYDOL"
+        android:background="@color/ColorPrimary"
+        android:textColor="@color/BackgroundWhite"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:id="@+id/buttonRegister"
+        android:textStyle="bold|italic"
+        android:textSize="20dp"/>
+
+    <Button
+        android:layout_width="335dp"
+        android:layout_height="wrap_content"
+        android:text="GİRİŞ SAYFASINA DÖN"
+        android:background="@color/ColorPrimary"
+        android:textColor="@color/BackgroundWhite"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:id="@+id/button_backto_login"
+        android:textStyle="bold|italic"
+        android:textSize="20dp"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>

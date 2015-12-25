@@ -2,13 +2,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
     <item
-    android:id="@+id/action_profile"
-    android:title="@+id/action_profile"
-    android:orderInCategory="100"
-        app:showAsAction="never" />
+    android:id="@+id/menuProfile"
+    android:title="Profil"
+
+         />
     <item
-    android:id="@+id/action_hakkimizda"
-    android:title="@+id/action_hakkimizda"
-    android:orderInCategory="100"
-        app:showAsAction="never" />
+    android:id="@+id/menuLogout"
+    android:title="Çıkış Yap"
+     />
 </menu>
