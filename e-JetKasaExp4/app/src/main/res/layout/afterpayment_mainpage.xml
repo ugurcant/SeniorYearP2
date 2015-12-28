@@ -16,17 +16,20 @@
     </FrameLayout>
 
     <Button
-        android:layout_width="310dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Ana Menüye Dön"
         android:id="@+id/button_backto_mainpage"
         android:background="@color/ColorPrimary"
         android:textColor="@color/BackgroundWhite"
         android:layout_gravity="center_horizontal|bottom"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:textStyle="bold"
-        android:textSize="18dp" />
+        android:textSize="15dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -41,5 +44,21 @@
         android:gravity="center_vertical|center_horizontal"
         android:textColor="@color/ColorPrimaryDark"
         android:textStyle="bold" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="QR Kodu Göster"
+        android:id="@+id/button_goToQR"
+        android:background="@color/ColorPrimary"
+        android:textColor="@color/BackgroundWhite"
+        android:layout_gravity="center_horizontal|bottom"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:layout_alignTop="@+id/button_backto_mainpage"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="25dp"
+        android:layout_marginEnd="25dp" />
 
 </RelativeLayout>

@@ -1,6 +1,7 @@
 package ofisesoyle.exp2;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -11,11 +12,16 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.gson.Gson;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
+import ofisesoyle_moduls.Config;
 import ofisesoyle_moduls.Receivable;
 
 public class ShoppingListActivity extends FragmentActivity{
@@ -24,19 +30,30 @@ public class ShoppingListActivity extends FragmentActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shopping_list_mainpage);
 
-    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-    ft.add(R.id.placeholder_list, new ShoppingListFragment());
-    ft.commit();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.add(R.id.placeholder_list, new ShoppingListFragment());
+        ft.commit();
 
-    Button addtoList = (Button) findViewById(R.id.button_add_to_list);
+        Button addtoList = (Button) findViewById(R.id.button_add_to_list);
         addtoList.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            System.out.println("Add to List");
-            addingListDialogCaller();
-        }
-    });
-}
+            @Override
+            public void onClick(View v) {
+                System.out.println("Add to List");
+                addingListDialogCaller();
+            }
+        });
+
+        Button backToMainP = (Button) findViewById(R.id.button_backTo_MainPage);
+        backToMainP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ShoppingListActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        saveReceivables(this, MainActivity.allLists.productShoppingList);
+        MainActivity.allLists.productShoppingList = getReceivables(this);
+    }
     public void addingListDialogCaller() {
         AddToListMessageDialogFragment newFragment = new AddToListMessageDialogFragment();
         newFragment.show(getSupportFragmentManager(), "add_to_list_dialog");
@@ -52,46 +69,38 @@ public class ShoppingListActivity extends FragmentActivity{
         }
     }
 
-    public static void setStringArrayPref(Context context, String products, String amounts, ArrayList<Receivable> values){
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        SharedPreferences.Editor editor = prefs.edit();
-        JSONArray p = new JSONArray();
-        JSONArray a = new JSONArray();
-        for (int i = 0; i< values.size(); i++){
-            p.put(values.get(i).getReceivable_name());
-            a.put(values.get(i).getAmount());
-        }
-        if(!values.isEmpty()){
-            editor.putString(products,p.toString());
-            editor.putString(amounts,a.toString());
-        }else{
-            editor.putString(products,null);
-            editor.putString(amounts,null);
-        }
+    public void saveReceivables(Context context, ArrayList<Receivable> favorites) {
+        SharedPreferences settings;
+        SharedPreferences.Editor editor;
+
+        settings = context.getSharedPreferences(Config.PREFS_NAME,
+                Context.MODE_PRIVATE);
+        editor = settings.edit();
+
+        Gson gson = new Gson();
+        String jsonFavorites = gson.toJson(favorites);
+
+        editor.putString(Config.RECEIVABLES_SHARED_PREF, jsonFavorites);
         editor.commit();
     }
 
-    public static ArrayList<Receivable> getStringArrayPref(Context context, String products, String amounts){
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        String jsonP = prefs.getString(products, null);
-        String jsonA = prefs.getString(amounts, null);
-        ArrayList<Receivable> receivables = new ArrayList<Receivable>();
-        if(jsonA != null && jsonP != null){
-            try{
-                JSONArray p = new JSONArray(jsonP);
-                JSONArray a = new JSONArray(jsonA);
+    public ArrayList<Receivable> getReceivables(Context context) {
+        SharedPreferences settings;
+        List<Receivable> favorites;
 
-                for (int i = 0; i<p.length();i++){
-                    String product = p.optString(i);
-                    String amount = a.optString(i);
-                    Receivable receivable = new Receivable(product,amount);
-                    receivables.add(receivable);
-                }
+        settings = context.getSharedPreferences(Config.PREFS_NAME,
+                Context.MODE_PRIVATE);
 
-            }catch(JSONException e){
-                e.printStackTrace();
-            }
-        }
-        return receivables;
+        if (settings.contains(Config.RECEIVABLES_SHARED_PREF)) {
+            String jsonFavorites = settings.getString(Config.RECEIVABLES_SHARED_PREF, null);
+            Gson gson = new Gson();
+            Receivable[] favoriteItems = gson.fromJson(jsonFavorites,
+                    Receivable[].class);
+
+            favorites = Arrays.asList(favoriteItems);
+            favorites = new ArrayList<Receivable>(favorites);
+        } else
+            return null;
+        return (ArrayList<Receivable>) favorites;
     }
 }

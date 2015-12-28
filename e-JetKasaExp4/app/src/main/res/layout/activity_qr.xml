@@ -1,0 +1,61 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".QRActivity" >
+
+    <ProgressBar
+        android:id="@+id/qrPrg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        />
+
+    <ImageView
+        android:id="@+id/qrImg"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Ürün LİSTESİNE Dön"
+        android:id="@+id/button_back_to_AP"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/ColorPrimary"
+        android:textColor="@color/BackgroundWhite"
+        android:textStyle="bold|italic"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/qrTxt_ShopNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="Alışveriş No :"
+        android:textSize="25dp"
+        android:textColor="@color/ColorPrimaryDark"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/qrTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textColor="@color/ColorPrimaryDark"
+        android:layout_below="@+id/qrTxt_ShopNo"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:textStyle="bold|italic" />
+
+
+
+</RelativeLayout>

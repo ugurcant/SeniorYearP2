@@ -12,14 +12,11 @@ import java.util.ArrayList;
 public class AllLists{
     public ArrayList<Receivable> productShoppingList = new ArrayList<>();
     public ArrayList<BasketProduct> productBasketList = new ArrayList<>();
-    public ArrayList<AllOrders> productAllOrdersList = new ArrayList<>();
-    public ArrayList<Order> productOrderList = new ArrayList<>();
+    public ArrayList<BasketProduct> productOrderList = new ArrayList<>();
 
     public ArrayList<Receivable> getProductShoppingList() {return productShoppingList;}
 
     public ArrayList<BasketProduct> getProductBasketList() {return productBasketList;}
-
-    public ArrayList<AllOrders> getProductAllOrdersList() {return productAllOrdersList;}
 
     public void addToProductShoppingList(Receivable receivable) {
         productShoppingList.add(receivable);
@@ -37,10 +34,4 @@ public class AllLists{
         }
         return total;
     }
-
-    public ArrayList<AllOrders> addToProductOrderList(AllOrders allOrders) {
-        productAllOrdersList.add(allOrders);
-        return productAllOrdersList;
-    }
-
 }

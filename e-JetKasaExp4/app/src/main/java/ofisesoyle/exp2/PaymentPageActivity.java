@@ -1,10 +1,9 @@
     package ofisesoyle.exp2;
 
     import android.app.Activity;
-    import android.app.AlertDialog;
     import android.content.Context;
-    import android.content.DialogInterface;
     import android.content.Intent;
+    import android.content.SharedPreferences;
     import android.os.AsyncTask;
     import android.os.Bundle;
     import android.support.v4.app.FragmentActivity;
@@ -12,11 +11,9 @@
     import android.util.Log;
     import android.view.View;
     import android.widget.Button;
-    import android.widget.Toast;
 
     import com.paypal.android.sdk.payments.PayPalAuthorization;
     import com.paypal.android.sdk.payments.PayPalConfiguration;
-    import com.paypal.android.sdk.payments.PayPalItem;
     import com.paypal.android.sdk.payments.PayPalOAuthScopes;
     import com.paypal.android.sdk.payments.PayPalPayment;
     import com.paypal.android.sdk.payments.PayPalService;
@@ -28,12 +25,13 @@
     import org.json.JSONObject;
 
     import java.math.BigDecimal;
-    import java.util.ArrayList;
     import java.util.Arrays;
     import java.util.HashMap;
     import java.util.HashSet;
+    import java.util.Random;
     import java.util.Set;
 
+    import ofisesoyle_moduls.BasketProduct;
     import ofisesoyle_moduls.Config;
 
     public class PaymentPageActivity extends FragmentActivity {
@@ -42,6 +40,9 @@
         private static final String TAG = "paymentExample";
         private static final String CONFIG_ENVIRONMENT = PayPalConfiguration.ENVIRONMENT_NO_NETWORK;
         private static final String CONFIG_CLIENT_ID = "credential from developer.paypal.com";
+
+        public static int orderNumber = 0;
+        Activity context = this;
 
         private static PayPalConfiguration config = new PayPalConfiguration()
                 .environment(CONFIG_ENVIRONMENT).clientId(CONFIG_CLIENT_ID);
@@ -64,11 +65,19 @@
 
             Button finishShopping = (Button) findViewById(R.id.button_finish_shopping);
             finishShopping.setOnClickListener(new View.OnClickListener() {
-
                 @Override
                 public void onClick(View v) {
                     System.out.println("PAYPAL");
                     onBuyPressed();
+                }
+            });
+
+            Button backToMainP = (Button) findViewById(R.id.button_backTo_mainPage);
+            backToMainP.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(PaymentPageActivity.this,MainActivity.class);
+                    startActivity(intent);
                 }
             });
 
@@ -151,12 +160,26 @@
                             Log.i(TAG, confirm.toJSONObject().toString(4));
                             Log.i(TAG, confirm.getPayment().toJSONObject().toString(4));
 
-                            for(int i = 1; i <= MainActivity.allLists.productBasketList.size(); i++){
-                                getProductStock(MainActivity.allLists.productBasketList.get(i-1).getBasketBarcodeNo()
-                                        ,MainActivity.allLists.productBasketList.get(i-1).getBasketProduct_amount());
+                            int START = 1000000;
+                            int END = 100000;
+                            Random randomGenerator = new Random();
+                            long range = (long)START - (long)END + 1;
+                            long fraction = (long)(range * randomGenerator.nextDouble());
+                            orderNumber =  (int)(fraction + START);
+
+                            MainActivity.allLists.productOrderList.addAll(MainActivity.allLists.productBasketList);
+
+                            for(int i = 1; i <= MainActivity.allLists.productOrderList.size(); i++){
+                                getProductStock(MainActivity.allLists.productOrderList.get(i - 1).getBasketBarcodeNo()
+                                        , MainActivity.allLists.productOrderList.get(i - 1).getBasketProduct_amount());
+                                writeOrder(MainActivity.allLists.productOrderList.get(i - 1), orderNumber);
                             }
+
+                            MainActivity.allLists.productBasketList.clear();
                             Intent intentAP = new Intent(PaymentPageActivity.this, PaymentFinishedActivity.class);
                             startActivity(intentAP);
+
+                            System.out.println("Online kullanıcı: " + getSPValue(context));
                             /**
                              *  TODO: send 'confirm' (and possibly confirm.getPayment() to your server for verification
                              * or consent completion.
@@ -265,5 +288,40 @@
             }
             setProductStock sp = new setProductStock();
             sp.execute();
+        }
+
+        private void writeOrder(final BasketProduct product, final int orderNo) {
+
+            class writeOrder extends AsyncTask<Void, Void, String> {
+                @Override
+                protected String doInBackground(Void... params) {
+
+                    HashMap<String,String> hashMap = new HashMap<>();
+                    hashMap.put(Config.KEY_ORDER_ID,Integer.toString(orderNo));
+                    hashMap.put(Config.KEY_USERNAME,getSPValue(context));
+                    hashMap.put(Config.KEY_PRODUCT_BARCODE,product.getBasketBarcodeNo());
+                    hashMap.put(Config.KEY_PRODUCT_NAME,product.getBasketProduct_name());
+                    hashMap.put(Config.KEY_PRODUCT_AMOUNT,Integer.toString(product.getBasketProduct_amount()));
+                    hashMap.put(Config.KEY_PRODUCT_PRICE,Double.toString(product.getBasketProduct_amount()*product.getBasketProduct_price()));
+                    RequestHandler rh = new RequestHandler();
+
+                    String s = rh.sendPostRequest(Config.URL_WRITE_ORDER,hashMap);
+                    return s;
+                }
+                @Override
+                protected void onPostExecute(String s) {
+                    super.onPostExecute(s);
+                }
+            }
+            writeOrder wo = new writeOrder();
+            wo.execute();
+        }
+
+        public String getSPValue(Context context) {
+            SharedPreferences settings;
+            String text;
+            settings = context.getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE); //1
+            text = settings.getString(Config.USERNAME_SHARED_PREF, null); //2
+            return text;
         }
     }

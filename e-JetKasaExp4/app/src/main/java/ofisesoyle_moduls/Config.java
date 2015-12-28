@@ -6,16 +6,21 @@ public class Config {
     public static final String URL_UPDATE_STOCK = "http://uctfastpay.esy.es/updateStock.php?barcode=";
     public static final String URL_LOGIN = "http://uctfastpay.esy.es/login.php";
     public static final String URL_REGISTER = "http://uctfastpay.esy.es/register.php";
+    public static final String URL_WRITE_ORDER = "http://uctfastpay.esy.es/writeOrder.php";
 
     //Keys that will be used to send the request to php scripts
     public static final String KEY_PRODUCT_BARCODE = "barcode";
+    public static final String KEY_PRODUCT_NAME = "name";
     public static final String KEY_PRODUCT_AMOUNT = "amount";
+    public static final String KEY_PRODUCT_PRICE = "price";
 
     public static final String KEY_USERFNAME = "user_fname";
     public static final String KEY_USERLNAME = "user_lname";
     public static final String KEY_USERNAME = "user_name";
     public static final String KEY_USEREMAIL = "user_email";
     public static final String KEY_PASSWORD = "user_password";
+
+    public static final String KEY_ORDER_ID = "order_id";
 
     //JSON Tags
     public static final String TAG_JSON_ARRAY="result";
@@ -31,4 +36,7 @@ public class Config {
     public static final String LOGIN_SUCCESS = "success";
     public static final String LOGGEDIN_SHARED_PREF = "loggedin";
     public static final String SHARED_PREF_NAME = "myloginapp";
+
+    public static final String PREFS_NAME = "Receivable_APP";
+    public static final String RECEIVABLES_SHARED_PREF = "Receivables";
 }

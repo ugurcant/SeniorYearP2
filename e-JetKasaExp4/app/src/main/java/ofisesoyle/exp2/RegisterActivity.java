@@ -50,53 +50,49 @@ public class RegisterActivity extends AppCompatActivity{
     }
 
     private void registerUser() {
-        String fName = editTextFirstName.getText().toString();
-        String lName = editTextLastName.getText().toString();
-        String username = editTextUsername.getText().toString().toLowerCase();
-        String password = editTextPassword.getText().toString().toLowerCase();
-        String email = editTextEmail.getText().toString().toLowerCase();
+        String fName = editTextFirstName.getText().toString().trim();
+        String lName = editTextLastName.getText().toString().trim();
+        String username = editTextUsername.getText().toString().trim().toLowerCase();
+        String password = editTextPassword.getText().toString().trim().toLowerCase();
+        String email = editTextEmail.getText().toString().trim().toLowerCase();
 
-        register(fName,lName,username,password,email);
+        register(fName,lName,username,email,password);
     }
 
-    private void register(final String fname, final String lname, final String username, final String password, final String email) {
+    private void register(final String fname, final String lname, final String username,final String email, final String password) {
 
         class RegisterUser extends AsyncTask<String, Void, String> {
-
             ProgressDialog loading;
+            RequestHandler rh = new RequestHandler();
 
             @Override
              protected void onPreExecute() {
                 super.onPreExecute();
                 loading = ProgressDialog.show(RegisterActivity.this, "Lütfen Bekleyin",null, true, true);
             }
-
             @Override
             protected String doInBackground(String... params) {
                 HashMap<String,String> hashMap = new HashMap<>();
                 hashMap.put(Config.KEY_USERFNAME,fname);
                 hashMap.put(Config.KEY_USERLNAME,lname);
                 hashMap.put(Config.KEY_USERNAME,username);
-                hashMap.put(Config.KEY_USEREMAIL,password);
-                hashMap.put(Config.KEY_PASSWORD,email);
-                RequestHandler rh = new RequestHandler();
+                hashMap.put(Config.KEY_USEREMAIL,email);
+                hashMap.put(Config.KEY_PASSWORD,password);
 
                 String s = rh.sendPostRequest(Config.URL_REGISTER,hashMap);
                 return s;
             }
-
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 loading.dismiss();
-                try {
-                    JSONObject jsonObject = new JSONObject(s);
-                    JSONArray result = jsonObject.getJSONArray(Config.TAG_JSON_ARRAY);
-                    JSONObject c = result.getJSONObject(0);
-                    String request_result = c.getString(Config.TAG_REQUEST);
-                    Toast.makeText(RegisterActivity.this, request_result, Toast.LENGTH_LONG).show();
-
-                    }catch(JSONException e) {
+                try{
+                JSONObject jsonObject = new JSONObject(s);
+                JSONArray result = jsonObject.getJSONArray(Config.TAG_JSON_ARRAY);
+                JSONObject c = result.getJSONObject(0);
+                String request_result = c.getString(Config.TAG_REQUEST);
+                Toast.makeText(getApplicationContext(), request_result, Toast.LENGTH_LONG).show();
+                }catch(JSONException e) {
                     e.printStackTrace();
                 }
             }

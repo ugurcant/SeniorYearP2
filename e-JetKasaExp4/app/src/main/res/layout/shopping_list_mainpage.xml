@@ -15,17 +15,37 @@
     </FrameLayout>
 
     <Button
-        android:layout_width="310dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Lİsteye Ürün Ekle"
         android:id="@+id/button_add_to_list"
         android:background="@color/ColorPrimary"
         android:textColor="@color/BackgroundWhite"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="25dp"
         android:layout_gravity="center_horizontal|bottom"
         android:gravity="center_vertical|center_horizontal"
         android:textStyle="bold|italic"
-        android:textSize="20dp" />
+        android:textSize="17dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Ana Menüye Dön"
+        android:id="@+id/button_backTo_MainPage"
+        android:background="@color/ColorPrimary"
+        android:textColor="@color/BackgroundWhite"
+        android:layout_gravity="center_horizontal|bottom"
+        android:gravity="center_vertical|center_horizontal"
+        android:textStyle="bold|italic"
+        android:textSize="18dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="25dp"
+        android:layout_marginEnd="25dp"/>
 
 </RelativeLayout>

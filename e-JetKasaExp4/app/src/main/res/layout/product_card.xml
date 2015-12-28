@@ -27,7 +27,7 @@
         style="@style/Widget.AppCompat.ActionButton.CloseMode"
         android:layout_width="40dp"
         android:layout_height="30dp"
-        android:text=" X"
+        android:text="X"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/button_delete_product"
         android:background="@color/RedButton"
@@ -88,24 +88,24 @@
         style="@style/Widget.AppCompat.ActionButton.CloseMode"
         android:layout_width="40dp"
         android:layout_height="30dp"
-        android:text=" +"
+        android:text="+"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/button_augment_product"
         android:background="@color/RedButton"
         android:textColor="@color/BackgroundWhite"
         android:gravity="center_vertical|center_horizontal"
         android:textStyle="bold|italic"
-        android:layout_marginRight="20dp"
-        android:layout_marginEnd="20dp"
         android:layout_alignTop="@+id/button_reduce_product"
         android:layout_toLeftOf="@+id/button_reduce_product"
-        android:layout_toStartOf="@+id/button_reduce_product" />
+        android:layout_toStartOf="@+id/button_reduce_product"
+        android:layout_marginRight="26dp"
+        android:layout_marginEnd="26dp" />
 
     <Button
         style="@style/Widget.AppCompat.ActionButton.CloseMode"
         android:layout_width="40dp"
         android:layout_height="30dp"
-        android:text=" -"
+        android:text="-"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/button_reduce_product"
         android:background="@color/RedButton"
@@ -113,8 +113,8 @@
         android:textStyle="bold|italic"
         android:textSize="25dp"
         android:gravity="center"
-        android:layout_below="@+id/text_card_aciklama"
-        android:layout_toLeftOf="@+id/button_delete_product"
-        android:layout_toStartOf="@+id/button_delete_product" />
+        android:layout_alignTop="@+id/text_card_adet"
+        android:layout_toLeftOf="@+id/receivable_card_amount"
+        android:layout_toStartOf="@+id/receivable_card_amount" />
 
 </RelativeLayout>

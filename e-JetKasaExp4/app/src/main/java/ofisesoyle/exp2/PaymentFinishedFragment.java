@@ -36,7 +36,7 @@ public class PaymentFinishedFragment extends Fragment{
     }
     public void createAPSepet(){
         System.out.println("AP Sepet Olustu");
-        aPproductCards.addAll(MainActivity.allLists.productBasketList);
+        aPproductCards.addAll(MainActivity.allLists.productOrderList);
         PaymentFinishedCardAdapter uCAdapter = new PaymentFinishedCardAdapter(getActivity(), aPproductCards, PaymentFinishedFragment.this.getFragmentManager());;
         gridView = (StaggeredGridView) getView().findViewById(R.id.grid_view);
         gridView.setAdapter(uCAdapter);

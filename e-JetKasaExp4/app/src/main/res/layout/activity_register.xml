@@ -67,7 +67,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
-        android:id="@+id/editTextRegisterEmail" />
+        android:id="@+id/editTextRegisterEmail"
+        android:textIsSelectable="false" />
 
     <Button
         android:layout_width="fill_parent"

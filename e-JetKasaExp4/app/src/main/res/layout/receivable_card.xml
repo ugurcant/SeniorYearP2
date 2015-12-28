@@ -32,11 +32,13 @@
         android:id="@+id/button_delete_receivable"
         android:background="@color/RedButton"
         android:textColor="@color/BackgroundWhite"
+        android:gravity="center_vertical|center_horizontal"
+        android:textStyle="bold|italic"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:gravity="center_vertical|center_horizontal"
-        android:textStyle="bold|italic" />
+        android:layout_marginRight="23dp"
+        android:layout_marginEnd="23dp" />
 
     <TextView
         android:layout_width="wrap_content"

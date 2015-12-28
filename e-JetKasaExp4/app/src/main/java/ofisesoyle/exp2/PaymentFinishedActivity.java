@@ -27,5 +27,14 @@ public class PaymentFinishedActivity extends FragmentActivity{
                 startActivity(intent);
             }
         });
+        Button goToQR = (Button) findViewById(R.id.button_goToQR);
+        goToQR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("Go to QR");
+                Intent intent = new Intent(PaymentFinishedActivity.this,QRActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

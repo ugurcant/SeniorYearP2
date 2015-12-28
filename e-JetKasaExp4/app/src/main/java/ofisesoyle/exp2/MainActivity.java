@@ -67,6 +67,7 @@ public class MainActivity extends ActionBarActivity {
             super.onBackPressed();
         }
     }
+
     public void launchScannerActivity(View v) {
         Intent intent = new Intent(this, ScannerActivity.class);
         startActivity(intent);
@@ -82,13 +83,24 @@ public class MainActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
+    public void launchAfterPaymentActivity(View v) {
+        Intent intent = new Intent(this, PaymentFinishedActivity.class);
+        startActivity(intent);
+    }
+
+    public void exitFromApp(View v){
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
 
     //Logout function
     private void logout(){
         //Creating an alert dialog to confirm logout
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setMessage("Are you sure you want to logout?");
-        alertDialogBuilder.setPositiveButton("Yes",
+        alertDialogBuilder.setMessage("Çıkış yapmak istediğinize emin misiniz?");
+        alertDialogBuilder.setPositiveButton("Evet",
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
@@ -107,17 +119,20 @@ public class MainActivity extends ActionBarActivity {
                         //Saving the sharedpreferences
                         editor.commit();
 
+                        MainActivity.allLists.productBasketList.clear();
+                        MainActivity.allLists.productOrderList.clear();
+                        MainActivity.allLists.productShoppingList.clear();
+
                         //Starting login activity
                         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                         startActivity(intent);
                     }
                 });
 
-        alertDialogBuilder.setNegativeButton("No",
+        alertDialogBuilder.setNegativeButton("Hayır",
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
-
                     }
                 });
 

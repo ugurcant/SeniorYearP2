@@ -22,8 +22,8 @@
     <Button
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:text="Bize Ulaşın"
-        android:id="@+id/button_bize_ulasin"
+        android:text="Uygulamadan Çık"
+        android:id="@+id/button_exit_app"
         android:background="@color/ColorPrimary"
         android:textColor="@color/BackgroundWhite"
         android:layout_marginRight="25dp"
@@ -31,26 +31,25 @@
         android:layout_alignTop="@+id/button_nasil_calisir"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:onClick="exitFromApp"/>
 
     <Button
         android:layout_width="@dimen/abc_action_bar_stacked_tab_max_width"
         android:layout_height="@dimen/abc_action_bar_subtitle_top_margin_material"
         android:text="ALIŞVERİŞ LİSTEM"
         android:id="@+id/button_SList"
-        android:layout_marginTop="68dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/button_nasil_calisir"
-        android:layout_alignStart="@+id/button_nasil_calisir"
-        android:layout_toStartOf="@+id/button_bize_ulasin"
-        android:layout_alignParentStart="false"
+        android:layout_marginTop="46dp"
         android:textColor="@color/BackgroundWhite"
-        android:layout_alignRight="@+id/button_bize_ulasin"
-        android:layout_alignEnd="@+id/button_bize_ulasin"
         android:background="@color/tabsScrollColor"
         android:onClick="launchListActivity"
         android:textStyle="bold"
-        android:textSize="18dp" />
+        android:textSize="18dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/button_nasil_calisir"
+        android:layout_alignStart="@+id/button_nasil_calisir"
+        android:layout_alignRight="@+id/button_exit_app"
+        android:layout_alignEnd="@+id/button_exit_app" />
 
     <Button
         android:layout_width="@dimen/abc_action_bar_stacked_tab_max_width"
@@ -63,8 +62,8 @@
         android:layout_alignStart="@+id/button_SList"
         android:textColor="@color/BackgroundWhite"
         android:layout_alignParentStart="false"
-        android:layout_alignRight="@+id/button_bize_ulasin"
-        android:layout_alignEnd="@+id/button_bize_ulasin"
+        android:layout_alignRight="@+id/button_exit_app"
+        android:layout_alignEnd="@+id/button_exit_app"
         android:background="@color/tabsScrollColor"
         android:onClick="launchScannerActivity"
         android:textStyle="bold"
@@ -80,12 +79,29 @@
         android:textColor="@color/BackgroundWhite"
         android:layout_alignParentStart="false"
         android:background="@color/tabsScrollColor"
-        android:layout_alignRight="@+id/button_bize_ulasin"
-        android:layout_alignEnd="@+id/button_bize_ulasin"
+        android:layout_alignRight="@+id/button_exit_app"
+        android:layout_alignEnd="@+id/button_exit_app"
         android:layout_alignLeft="@+id/button_AddToBasket"
         android:layout_alignStart="@+id/button_AddToBasket"
         android:onClick="launchBasketActivity"
         android:textStyle="bold"
         android:textSize="18dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ÖDEMESİ YAPILAN ÜRÜNLER"
+        android:id="@+id/button_go_to_afterpayment"
+        android:layout_marginTop="55dp"
+        android:textColor="@color/BackgroundWhite"
+        android:background="@color/tabsScrollColor"
+        android:onClick="launchAfterPaymentActivity"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:layout_below="@+id/button_GoToBasket"
+        android:layout_alignRight="@+id/button_GoToBasket"
+        android:layout_alignEnd="@+id/button_GoToBasket"
+        android:layout_alignLeft="@+id/button_GoToBasket"
+        android:layout_alignStart="@+id/button_GoToBasket" />
 
 </RelativeLayout>
