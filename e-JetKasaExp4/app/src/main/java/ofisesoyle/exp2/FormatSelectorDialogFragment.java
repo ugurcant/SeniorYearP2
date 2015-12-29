@@ -9,7 +9,6 @@ import android.support.v4.app.DialogFragment;
 import java.util.ArrayList;
 
 import me.dm7.barcodescanner.zbar.BarcodeFormat;
-import me.dm7.barcodescanner.zbar.ZBarScannerView;
 
 public class FormatSelectorDialogFragment extends DialogFragment {
     public interface FormatSelectorDialogListener {

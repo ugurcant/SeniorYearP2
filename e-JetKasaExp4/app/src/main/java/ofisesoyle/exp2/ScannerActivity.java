@@ -1,5 +1,4 @@
 package ofisesoyle.exp2;
-import android.content.Intent;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -186,7 +185,6 @@ public class ScannerActivity extends ActionBarActivity implements AddToBasketMes
         mScannerView.setAutoFocus(mAutoFocus);
     }
 
-
     public void setupFormats() {
         List<BarcodeFormat> formats = new ArrayList<BarcodeFormat>();
         if(mSelectedIndices == null || mSelectedIndices.isEmpty()) {
@@ -195,7 +193,6 @@ public class ScannerActivity extends ActionBarActivity implements AddToBasketMes
                 mSelectedIndices.add(i);
             }
         }
-
         for(int index : mSelectedIndices) {
             formats.add(BarcodeFormat.ALL_FORMATS.get(index));
         }

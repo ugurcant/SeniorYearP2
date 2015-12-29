@@ -7,6 +7,7 @@ public class Config {
     public static final String URL_LOGIN = "http://uctfastpay.esy.es/login.php";
     public static final String URL_REGISTER = "http://uctfastpay.esy.es/register.php";
     public static final String URL_WRITE_ORDER = "http://uctfastpay.esy.es/writeOrder.php";
+    public static final String URL_GET_USER_EMAIL = "http://uctfastpay.esy.es/getUserEmail.php?user_name=";
 
     //Keys that will be used to send the request to php scripts
     public static final String KEY_PRODUCT_BARCODE = "barcode";
@@ -29,6 +30,7 @@ public class Config {
     public static final String TAG_PRICE = "product_price";
     public static final String TAG_AMOUNT = "product_amount";
     public static final String TAG_REQUEST = "request_result";
+    public static final String TAG_USER_EMAIL = "user_email";
 
     public static final String PRODUCT_BARCODE = "prd_barcode";
     public static final String USERNAME_SHARED_PREF = "user_name";

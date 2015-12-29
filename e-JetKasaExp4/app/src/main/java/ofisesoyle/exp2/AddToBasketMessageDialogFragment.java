@@ -2,13 +2,11 @@ package ofisesoyle.exp2;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -65,24 +63,6 @@ public class AddToBasketMessageDialogFragment extends DialogFragment {
         product_price = (TextView) rootView.findViewById(R.id.addtobasket_product_price);
         product_amount = (Spinner) rootView.findViewById(R.id.addtobasket_amout);
 
-/*
-       // Array List Control
-        if(MainActivity.priceList.findFromPriceList(mBarcode) == true){
-            productName = MainActivity.priceList.getFromPriceList(mBarcode).getProduct_name();
-            productInfo = MainActivity.priceList.getFromPriceList(mBarcode).getProduct_info();
-            productPrice = MainActivity.priceList.getFromPriceList(mBarcode).getProduct_price();
-
-            product_name.setText(productName);
-            product_info.setText(productInfo);
-            product_price.setText(String.valueOf(productPrice)+ " TL");
-        }else{
-            productPrice = 1;
-            product_name.setText("Unknown Product");
-            product_info.setText("Unknown Product");
-            product_price.setText(String.valueOf(productPrice)+ " TL");
-        }
-*/
-        // Database Control
         getProduct(mBarcode);
 
         builder.setPositiveButton("Sepete Ekle", new DialogInterface.OnClickListener() {
@@ -94,8 +74,6 @@ public class AddToBasketMessageDialogFragment extends DialogFragment {
                     product.setBasketProduct_info(product_info.getText().toString());
                     product.setBasketProduct_price(Double.parseDouble(product_price.getText().toString()));
                     product.setBasketProduct_amount(Integer.parseInt(productAmount));
-                    System.out.println(product.getBasketProduct_name());
-                    System.out.println(Double.parseDouble(product_price.getText().toString())*2);
                     MainActivity.allLists.addToProductBasketList(product);
                     mListener.onDialogPositiveClick(AddToBasketMessageDialogFragment.this);
                 }
@@ -103,6 +81,7 @@ public class AddToBasketMessageDialogFragment extends DialogFragment {
         });
         builder.setNegativeButton("Yeniden Tara", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
+                mListener.onDialogPositiveClick(AddToBasketMessageDialogFragment.this);
                 dialog.cancel();
             }
         });

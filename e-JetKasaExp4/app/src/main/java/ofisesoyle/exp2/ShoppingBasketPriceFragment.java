@@ -12,13 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.etsy.android.grid.StaggeredGridView;
-
-import java.util.ArrayList;
-
-import ofisesoyle_moduls.BasketProduct;
-import ofisesoyle_moduls.Product;
-
 public class ShoppingBasketPriceFragment extends Fragment{
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

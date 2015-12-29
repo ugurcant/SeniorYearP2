@@ -6,7 +6,6 @@ import java.net.URLEncoder;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.text.ClipboardManager;
 //import android.content.ClipboardManager;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;

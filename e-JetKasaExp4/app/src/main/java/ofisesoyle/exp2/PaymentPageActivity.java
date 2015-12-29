@@ -11,6 +11,7 @@
     import android.util.Log;
     import android.view.View;
     import android.widget.Button;
+    import android.widget.Toast;
 
     import com.paypal.android.sdk.payments.PayPalAuthorization;
     import com.paypal.android.sdk.payments.PayPalConfiguration;
@@ -25,7 +26,9 @@
     import org.json.JSONObject;
 
     import java.math.BigDecimal;
+    import java.text.SimpleDateFormat;
     import java.util.Arrays;
+    import java.util.Calendar;
     import java.util.HashMap;
     import java.util.HashSet;
     import java.util.Random;
@@ -42,6 +45,7 @@
         private static final String CONFIG_CLIENT_ID = "credential from developer.paypal.com";
 
         public static int orderNumber = 0;
+        public static String eMailBody = "";
         Activity context = this;
 
         private static PayPalConfiguration config = new PayPalConfiguration()
@@ -76,7 +80,7 @@
             backToMainP.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(PaymentPageActivity.this,MainActivity.class);
+                    Intent intent = new Intent(PaymentPageActivity.this, MainActivity.class);
                     startActivity(intent);
                 }
             });
@@ -170,30 +174,31 @@
                             MainActivity.allLists.productOrderList.addAll(MainActivity.allLists.productBasketList);
 
                             for(int i = 1; i <= MainActivity.allLists.productOrderList.size(); i++){
+
                                 getProductStock(MainActivity.allLists.productOrderList.get(i - 1).getBasketBarcodeNo()
                                         , MainActivity.allLists.productOrderList.get(i - 1).getBasketProduct_amount());
+
                                 writeOrder(MainActivity.allLists.productOrderList.get(i - 1), orderNumber);
+
+                                eMailBody = eMailBody + prodDescCreator(MainActivity.allLists.productOrderList.get(i - 1));
                             }
+
+                            Calendar c = Calendar.getInstance();
+                            System.out.println("Current time => " + c.getTime());
+                            SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+                            String formattedDate = df.format(c.getTime());
+                            String eMailSubject = formattedDate + " tarihli, " + Integer.toString(orderNumber) + " numaralı alışverişinizin bilgileri. ";
+
+                            String totalOrderPrice = "\nToplam Tutar : " + Double.toString(MainActivity.allLists.calculateTotalPrice()) + " TL";
+                            eMailBody = eMailBody + totalOrderPrice;
+
+                            sendBillwithEmail(eMailSubject, eMailBody);
 
                             MainActivity.allLists.productBasketList.clear();
                             Intent intentAP = new Intent(PaymentPageActivity.this, PaymentFinishedActivity.class);
                             startActivity(intentAP);
 
                             System.out.println("Online kullanıcı: " + getSPValue(context));
-                            /**
-                             *  TODO: send 'confirm' (and possibly confirm.getPayment() to your server for verification
-                             * or consent completion.
-                             * See https://developer.paypal.com/webapps/developer/docs/integration/mobile/verify-mobile-payment/
-                             * for more details.
-                             *
-                             * For sample mobile backend interactions, see
-                             * https://github.com/paypal/rest-api-sdk-python/tree/master/samples/mobile_backend
-                             */
-
-                            /*Toast.makeText(
-                                    getApplicationContext(),
-                                    "Ödeme Alınmıştır, Teşekkürler", Toast.LENGTH_LONG).show();
-                            */
 
                         } catch (JSONException e) {
                             Log.e(TAG, "an extremely unlikely failure occurred: ", e);
@@ -323,5 +328,65 @@
             settings = context.getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE); //1
             text = settings.getString(Config.USERNAME_SHARED_PREF, null); //2
             return text;
+        }
+
+        private void sendBillwithEmail(final String subject, final String body) {
+            class sendBillwithEmail extends AsyncTask<Void, Void, String> {
+                @Override
+                protected String doInBackground(Void... params) {
+                    RequestHandler rh = new RequestHandler();
+                    String s = rh.sendGetRequestParam(Config.URL_GET_USER_EMAIL, getSPValue(context));
+                    return s;
+                }
+                @Override
+                protected void onPostExecute(String s) {
+                    super.onPostExecute(s);
+                    eMailSender(subject, body, s);
+                    System.out.println("onSendBillwithEmail: " + s);
+                }
+            }
+            sendBillwithEmail sbwe = new sendBillwithEmail();
+            sbwe.execute();
+        }
+
+        private void eMailSender(final String subject, final String body, final String eMail) {
+            String userEmail;
+            try {
+                JSONObject jsonObject = new JSONObject(eMail);
+                JSONArray result = jsonObject.getJSONArray(Config.TAG_JSON_ARRAY);
+                JSONObject c = result.getJSONObject(0);
+
+                userEmail = c.getString(Config.TAG_USER_EMAIL);
+                System.out.println("UserEmail: " + userEmail);
+
+                Mail m = new Mail("ejetkasa@gmail.com", "23ugur08");
+                String[] toArr = {userEmail};
+                m.set_to(toArr);
+                m.set_from("ejetkasa@gmail.com");
+                m.set_subject(subject);
+                m.set_body(body);
+                try {
+                    if (m.send()) {
+                        Toast.makeText(PaymentPageActivity.this, "Alışveriş detayları e-mailinize gönderildi.", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(PaymentPageActivity.this, "Email was not sent.", Toast.LENGTH_LONG).show();
+                    }
+                } catch (Exception e) {
+                    Log.e("MailApp", "Could not send email", e);
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        public String prodDescCreator(BasketProduct product){
+            String productDesc =
+                    "\nÜrün Barkodu : " +  product.getBasketBarcodeNo() +
+                    "\nÜrün Adı : " +  product.getBasketProduct_name() +
+                    "\nÜrün Miktarı : " + Integer.toString(product.getBasketProduct_amount()) +
+                    "\nTutar : " + Double.toString(product.getBasketProduct_price()*product.getBasketProduct_amount()) + " TL" +
+                    "\n---------------------------------------------------------";
+            return productDesc;
         }
     }

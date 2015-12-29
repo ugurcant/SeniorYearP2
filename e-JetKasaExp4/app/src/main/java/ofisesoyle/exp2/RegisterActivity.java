@@ -1,6 +1,8 @@
 package ofisesoyle.exp2;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -56,14 +58,26 @@ public class RegisterActivity extends AppCompatActivity{
         String password = editTextPassword.getText().toString().trim().toLowerCase();
         String email = editTextEmail.getText().toString().trim().toLowerCase();
 
-        register(fName,lName,username,email,password);
+        if (fName.equals("") || lName.equals("") || username.equals("") || password.equals("") || email.equals("")) {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+            builder1.setMessage("Eksik Bilgi Girdiniz");
+            builder1.setCancelable(true);
+            builder1.setPositiveButton("OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+        } else {
+            register(fName, lName, username, email, password);
+        }
     }
-
     private void register(final String fname, final String lname, final String username,final String email, final String password) {
 
         class RegisterUser extends AsyncTask<String, Void, String> {
             ProgressDialog loading;
-            RequestHandler rh = new RequestHandler();
 
             @Override
              protected void onPreExecute() {
@@ -78,6 +92,7 @@ public class RegisterActivity extends AppCompatActivity{
                 hashMap.put(Config.KEY_USERNAME,username);
                 hashMap.put(Config.KEY_USEREMAIL,email);
                 hashMap.put(Config.KEY_PASSWORD,password);
+                RequestHandler rh = new RequestHandler();
 
                 String s = rh.sendPostRequest(Config.URL_REGISTER,hashMap);
                 return s;
@@ -87,11 +102,16 @@ public class RegisterActivity extends AppCompatActivity{
                 super.onPostExecute(s);
                 loading.dismiss();
                 try{
-                JSONObject jsonObject = new JSONObject(s);
-                JSONArray result = jsonObject.getJSONArray(Config.TAG_JSON_ARRAY);
-                JSONObject c = result.getJSONObject(0);
-                String request_result = c.getString(Config.TAG_REQUEST);
-                Toast.makeText(getApplicationContext(), request_result, Toast.LENGTH_LONG).show();
+                    JSONObject jsonObject = new JSONObject(s);
+                    JSONArray result = jsonObject.getJSONArray(Config.TAG_JSON_ARRAY);
+                    JSONObject c = result.getJSONObject(0);
+                    String request_result = c.getString(Config.TAG_REQUEST);
+
+                    if (request_result.equals(Config.LOGIN_SUCCESS)) {
+                        Toast.makeText(RegisterActivity.this, "Kayıt Tamamlandı", Toast.LENGTH_LONG).show();
+                    }else {
+                        Toast.makeText(RegisterActivity.this, "Kullanıcı Adı Kullanılıyor", Toast.LENGTH_LONG).show();
+                    }
                 }catch(JSONException e) {
                     e.printStackTrace();
                 }
